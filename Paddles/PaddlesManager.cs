@@ -8,9 +8,9 @@ namespace Paddles
 
         private readonly List<Paddle> _paddles = [];
 
-        public void CreatePaddles(IPlayersManager players)
+        public void CreatePaddles(IPlayersParameters playersParameters)
         {
-            for(var i = 0; i < players.NumberOfPlayers; i++)
+            for(var i = 0; i < playersParameters.NumberOfPlayers; i++)
             {
                 var paddle = new Paddle();
                 _paddles.Add(paddle);
