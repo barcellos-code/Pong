@@ -1,8 +1,8 @@
 ﻿namespace Players
 {
-    public interface IPlayersManager
+    public interface IPlayersManager : IDisposable
     {
         int NumberOfPlayers { get; }
-        void Create(IPlayersParameters parameters);
+        void Create(int numberOfPlayers);
     }
 }

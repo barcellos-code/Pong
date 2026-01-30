@@ -8,5 +8,10 @@
         {
             Bounds = new(width, height);
         }
+
+        public void Dispose()
+        {
+            Bounds = new(0, 0);
+        }
     }
 }

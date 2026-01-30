@@ -1,6 +1,6 @@
 ﻿namespace GameStage
 {
-    public interface IGameStage
+    public interface IGameStage : IDisposable
     {
         Bounds Bounds { get; }
         void Create(int width, int height);

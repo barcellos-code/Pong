@@ -16,70 +16,48 @@ namespace Tests
         }
 
         [TestMethod]
-        public void TestGameStageWidth()
+        public void TestGameStageSize()
         {
             // Arrange
+            _gameStage?.Dispose();
             var expectedWidth = 0;
-
-            // Act
-            _gameStage?.Create(expectedWidth, 50);
-            var actualWidth = _gameStage?.Bounds.Width;
-
-            // Assert
-            Assert.AreEqual(expectedWidth, actualWidth);
-
-            // Arrange
-            expectedWidth = 10;
-
-            // Act
-            _gameStage?.Create(expectedWidth, 50);
-            actualWidth = _gameStage?.Bounds.Width;
-
-            // Assert
-            Assert.AreEqual(expectedWidth, actualWidth);
-
-            // Arrange
-            expectedWidth = 100;
-
-            // Act
-            _gameStage?.Create(expectedWidth, 50);
-            actualWidth = _gameStage?.Bounds.Width;
-
-            // Assert
-            Assert.AreEqual(expectedWidth, actualWidth);
-        }
-
-        [TestMethod]
-        public void TestGameStageHeight()
-        {
-            // Arrange
             var expectedHeight = 0;
 
             // Act
-            _gameStage?.Create(50, expectedHeight);
+            _gameStage?.Create(expectedWidth, expectedHeight);
+            var actualWidth = _gameStage?.Bounds.Width;
             var actualHeight = _gameStage?.Bounds.Height;
 
             // Assert
+            Assert.AreEqual(expectedWidth, actualWidth);
             Assert.AreEqual(expectedHeight, actualHeight);
 
             // Arrange
-            expectedHeight = 10;
+            _gameStage?.Dispose();
+            expectedWidth = 292;
+            expectedHeight = 15;
 
             // Act
-            _gameStage?.Create(50, expectedHeight);
+            _gameStage?.Create(expectedWidth, expectedHeight);
+            actualWidth = _gameStage?.Bounds.Width;
             actualHeight = _gameStage?.Bounds.Height;
 
             // Assert
+            Assert.AreEqual(expectedWidth, actualWidth);
             Assert.AreEqual(expectedHeight, actualHeight);
 
             // Arrange
-            expectedHeight = 100;
+            _gameStage?.Dispose();
+            expectedWidth = 63;
+            expectedHeight = 12;
 
             // Act
-            _gameStage?.Create(50, expectedHeight);
+            _gameStage?.Create(expectedWidth, expectedHeight);
+            actualWidth = _gameStage?.Bounds.Width;
             actualHeight = _gameStage?.Bounds.Height;
 
             // Assert
+            Assert.AreEqual(expectedWidth, actualWidth);
             Assert.AreEqual(expectedHeight, actualHeight);
         }
     }
