@@ -1,8 +1,8 @@
-﻿using Game;
+﻿using GameStage;
 
 namespace Parameters
 {
-    internal class PongGameParameters : IGameParameters
+    internal class PongGameStageParameters : IGameStageParameters
     {
         public int Width => 80;
         public int Height => 25;

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Game\Game.csproj" />
+    <ProjectReference Include="..\Game\GameStage.csproj" />
     <ProjectReference Include="..\Paddles\Paddles.csproj" />
     <ProjectReference Include="..\Parameters\Parameters.csproj" />
     <ProjectReference Include="..\Pong\Pong.csproj" />

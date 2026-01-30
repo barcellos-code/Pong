@@ -1,6 +1,7 @@
-﻿using Game;
+﻿using GameStage;
 using Microsoft.Extensions.DependencyInjection;
 using Paddles;
+using Players;
 using Pong;
 
 namespace Tests
@@ -12,14 +13,14 @@ namespace Tests
         public void TestNumberOfPaddles()
         {
             // Arrange
-            var gameParameters = GameContainer.Provider.GetService<IGameParameters>();
-            var expectedNumberOfPaddles = gameParameters.NumberOfPlayers;
-            var game = GameContainer.Provider.GetService<IGame>();
+            var playersParameters = GameContainer.Provider.GetService<IPlayersParameters>();
+            var expectedNumberOfPaddles = playersParameters.NumberOfPlayers;
+            var playersManager = GameContainer.Provider.GetService<IPlayersManager>();
             var paddlesManager = GameContainer.Provider.GetService<IPaddlesManager>();
 
             // Act
-            game.Create(gameParameters);
-            paddlesManager.CreatePaddles(game);
+            playersManager.Create(playersParameters);
+            paddlesManager.CreatePaddles(playersManager);
             var actualNumberOfPaddles = paddlesManager.NumberOfPaddles;
 
             // Assert

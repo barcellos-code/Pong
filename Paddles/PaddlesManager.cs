@@ -1,4 +1,4 @@
-﻿using Game;
+﻿using Players;
 
 namespace Paddles
 {
@@ -8,9 +8,9 @@ namespace Paddles
 
         private readonly List<Paddle> _paddles = [];
 
-        public void CreatePaddles(IGame game)
+        public void CreatePaddles(IPlayersManager players)
         {
-            for(var i = 0; i < game.NumberOfPlayers; i++)
+            for(var i = 0; i < players.NumberOfPlayers; i++)
             {
                 var paddle = new Paddle();
                 _paddles.Add(paddle);
