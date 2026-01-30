@@ -7,7 +7,8 @@
         public void Create(IGameParameters parameters)
         {
             var width = parameters.Width;
-            Bounds = new(width);
+            var height = parameters.Height;
+            Bounds = new(width, height);
         }
     }
 }

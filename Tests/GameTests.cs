@@ -33,5 +33,21 @@ namespace Tests
             // Assert
             Assert.AreEqual(expectedWidth, actualWidth);
         }
+
+        [TestMethod]
+        public void TestGameHeight()
+        {
+            // Arrange
+            var gameParameters = _provider.GetService<IGameParameters>();
+            var expectedHeight = gameParameters.Height;
+            var game = _provider.GetService<IGame>();
+
+            // Act
+            game.Create(gameParameters);
+            var actualHeight = game.Bounds.Height;
+
+            // Assert
+            Assert.AreEqual(expectedHeight, actualHeight);
+        }
     }
 }
