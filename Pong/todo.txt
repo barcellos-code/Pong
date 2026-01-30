@@ -1,4 +1,5 @@
-[ ] **Game has bounds of size equal to (80, 25) when created**
+[X] Game has width equal to 80 when created
+[ ] Game has height equal to 25 when created
 
 [ ] Paddles have size equal to 4 when created
 [ ] Paddles are placed on each side of the screen when created

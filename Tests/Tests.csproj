@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.2" />
     <PackageReference Include="MSTest" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Game\Game.csproj" />
+    <ProjectReference Include="..\Parameters\Parameters.csproj" />
   </ItemGroup>
 
   <ItemGroup>

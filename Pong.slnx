@@ -1,5 +1,7 @@
 <Solution>
   <Project Path="ExampleCode/ExampleCode.csproj" />
+  <Project Path="Game/Game.csproj" Id="cd927a54-09ce-4cf6-96e2-148107972554" />
+  <Project Path="Parameters/Parameters.csproj" Id="664ef0c0-3035-41ac-9a66-b126a684ea88" />
   <Project Path="Pong/Pong.csproj" />
   <Project Path="Tests/Tests.csproj" />
 </Solution>
