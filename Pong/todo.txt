@@ -1,5 +1,6 @@
 [X] Game has width equal to 80 when created
 [X] Game has height equal to 25 when created
+[X] Game has two players when created
 
 [ ] Paddles have size equal to 4 when created
 [ ] Paddles are placed on each side of the screen when created
@@ -15,7 +16,6 @@
 [ ] Ball resets back to center when player scores
 [ ] Ball reverses horizontal diretion when is reset back to center
 
-[ ] Game has two players when created
 [ ] Players start each with score equal to zero when game is created
 [ ] Player scores when ball hits right and left game bounds
 [ ] Game ends when a player hits a score equal to five

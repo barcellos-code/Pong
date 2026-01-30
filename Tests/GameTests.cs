@@ -49,5 +49,21 @@ namespace Tests
             // Assert
             Assert.AreEqual(expectedHeight, actualHeight);
         }
+
+        [TestMethod]
+        public void TestNumberOfPlayers()
+        {
+            // Arrange
+            var gameParameters = _provider.GetService<IGameParameters>();
+            var expectedNumberOfPlayers = gameParameters.NumberOfPlayers;
+            var game = _provider.GetService<IGame>();
+
+            // Act
+            game.Create(gameParameters);
+            var actualNumberOfPlayers = game.NumberOfPlayers;
+
+            // Assert
+            Assert.AreEqual(expectedNumberOfPlayers, actualNumberOfPlayers);
+        }
     }
 }
