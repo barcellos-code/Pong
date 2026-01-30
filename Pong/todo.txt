@@ -4,7 +4,7 @@
 
 [X] A number of paddles equal to the number of players is created on game creation
 
-[ ] **Paddles have size equal to 4 when created**
+[X] Paddles have size equal to 4 when created
 [ ] Paddles are placed on each side of the screen when created
 [ ] Paddles are placed at half the game bounds height when created
 [ ] Paddles move up and down on players input

@@ -1,6 +1,7 @@
 ﻿namespace Paddles
 {
-    internal class Paddle
+    public class Paddle (int size)
     {
+        public int Size { get; private set; } = size;
     }
 }

@@ -32,6 +32,7 @@ namespace Pong
             collection.AddSingleton<IPlayersManager, PlayersManager>();
             collection.AddSingleton<IPlayersParameters, PlayersParameters>();
             collection.AddSingleton<IPaddlesManager, PaddlesManager>();
+            collection.AddSingleton<IPaddlesParameters, PaddlesParameters>();
 
             return collection.BuildServiceProvider();
         }
