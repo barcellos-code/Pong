@@ -1,0 +1,20 @@
+[ ] **Game has bounds of size equal to (80, 25) when created**
+
+[ ] Paddles have size equal to 4 when created
+[ ] Paddles are placed on each side of the screen when created
+[ ] Paddles are placed at half the game bounds height when created
+[ ] Paddles move up and down on players input
+[ ] Paddles' movement is limited by the top and bottom game bounds
+
+[ ] Ball starts at the center of game bounds when created
+[ ] Ball starts moving on (1,1) direction when created
+[ ] Ball moves on game tick
+[ ] Ball bounces off top and bottom game bounds
+[ ] Ball bounces off paddles
+[ ] Ball resets back to center when player scores
+[ ] Ball reverses horizontal diretion when is reset back to center
+
+[ ] Game has two players when created
+[ ] Players start each with score equal to zero when game is created
+[ ] Player scores when ball hits right and left game bounds
+[ ] Game ends when a player hits a score equal to five
