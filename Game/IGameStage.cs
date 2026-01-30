@@ -3,6 +3,6 @@
     public interface IGameStage
     {
         Bounds Bounds { get; }
-        void Create(IGameStageParameters parameters);
+        void Create(int width, int height);
     }
 }

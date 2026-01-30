@@ -7,17 +7,43 @@ namespace Tests
     [TestClass]
     public sealed class GameStageTests
     {
+        private static IGameStage? _gameStage;
+
+        [ClassInitialize]
+        public static void ClassSetup(TestContext testContext)
+        {
+            _gameStage = GameContainer.Provider.GetService<IGameStage>();
+        }
+
         [TestMethod]
         public void TestGameStageWidth()
         {
             // Arrange
-            var gameStageParameters = GameContainer.Provider.GetService<IGameStageParameters>();
-            var expectedWidth = gameStageParameters.Width;
-            var stage = GameContainer.Provider.GetService<IGameStage>();
+            var expectedWidth = 0;
 
             // Act
-            stage.Create(gameStageParameters);
-            var actualWidth = stage.Bounds.Width;
+            _gameStage?.Create(expectedWidth, 50);
+            var actualWidth = _gameStage?.Bounds.Width;
+
+            // Assert
+            Assert.AreEqual(expectedWidth, actualWidth);
+
+            // Arrange
+            expectedWidth = 10;
+
+            // Act
+            _gameStage?.Create(expectedWidth, 50);
+            actualWidth = _gameStage?.Bounds.Width;
+
+            // Assert
+            Assert.AreEqual(expectedWidth, actualWidth);
+
+            // Arrange
+            expectedWidth = 100;
+
+            // Act
+            _gameStage?.Create(expectedWidth, 50);
+            actualWidth = _gameStage?.Bounds.Width;
 
             // Assert
             Assert.AreEqual(expectedWidth, actualWidth);
@@ -27,13 +53,31 @@ namespace Tests
         public void TestGameStageHeight()
         {
             // Arrange
-            var gameStageParameters = GameContainer.Provider.GetService<IGameStageParameters>();
-            var expectedHeight = gameStageParameters.Height;
-            var stage = GameContainer.Provider.GetService<IGameStage>();
+            var expectedHeight = 0;
 
             // Act
-            stage.Create(gameStageParameters);
-            var actualHeight = stage.Bounds.Height;
+            _gameStage?.Create(50, expectedHeight);
+            var actualHeight = _gameStage?.Bounds.Height;
+
+            // Assert
+            Assert.AreEqual(expectedHeight, actualHeight);
+
+            // Arrange
+            expectedHeight = 10;
+
+            // Act
+            _gameStage?.Create(50, expectedHeight);
+            actualHeight = _gameStage?.Bounds.Height;
+
+            // Assert
+            Assert.AreEqual(expectedHeight, actualHeight);
+
+            // Arrange
+            expectedHeight = 100;
+
+            // Act
+            _gameStage?.Create(50, expectedHeight);
+            actualHeight = _gameStage?.Bounds.Height;
 
             // Assert
             Assert.AreEqual(expectedHeight, actualHeight);

@@ -4,10 +4,8 @@
     {
         public Bounds Bounds { get; private set; }
 
-        public void Create(IGameStageParameters parameters)
+        public void Create(int width, int height)
         {
-            var width = parameters.Width;
-            var height = parameters.Height;
             Bounds = new(width, height);
         }
     }
