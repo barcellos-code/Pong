@@ -1,30 +1,19 @@
 ﻿using Game;
 using Microsoft.Extensions.DependencyInjection;
-using Parameters;
+using Pong;
 
 namespace Tests
 {
     [TestClass]
     public sealed class GameTests
     {
-        private static IServiceProvider _provider;
-
-        [ClassInitialize]
-        public static void ClassSetup(TestContext testContext)
-        {
-            var collection = new ServiceCollection();
-            collection.AddSingleton<IGame, PongGame>();
-            collection.AddSingleton<IGameParameters, PongGameParameters>();
-            _provider = collection.BuildServiceProvider();
-        }
-
         [TestMethod]
         public void TestGameWidth()
         {
             // Arrange
-            var gameParameters = _provider.GetService<IGameParameters>();
+            var gameParameters = GameContainer.Provider.GetService<IGameParameters>();
             var expectedWidth = gameParameters.Width;
-            var game = _provider.GetService<IGame>();
+            var game = GameContainer.Provider.GetService<IGame>();
 
             // Act
             game.Create(gameParameters);
@@ -38,9 +27,9 @@ namespace Tests
         public void TestGameHeight()
         {
             // Arrange
-            var gameParameters = _provider.GetService<IGameParameters>();
+            var gameParameters = GameContainer.Provider.GetService<IGameParameters>();
             var expectedHeight = gameParameters.Height;
-            var game = _provider.GetService<IGame>();
+            var game = GameContainer.Provider.GetService<IGame>();
 
             // Act
             game.Create(gameParameters);
@@ -54,9 +43,9 @@ namespace Tests
         public void TestNumberOfPlayers()
         {
             // Arrange
-            var gameParameters = _provider.GetService<IGameParameters>();
+            var gameParameters = GameContainer.Provider.GetService<IGameParameters>();
             var expectedNumberOfPlayers = gameParameters.NumberOfPlayers;
-            var game = _provider.GetService<IGame>();
+            var game = GameContainer.Provider.GetService<IGame>();
 
             // Act
             game.Create(gameParameters);

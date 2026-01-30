@@ -1,5 +1,6 @@
 ﻿using Game;
 using Microsoft.Extensions.DependencyInjection;
+using Paddles;
 using Parameters;
 
 namespace Pong
@@ -27,6 +28,7 @@ namespace Pong
             // Services
             collection.AddSingleton<IGame, PongGame>();
             collection.AddSingleton<IGameParameters, PongGameParameters>();
+            collection.AddSingleton<IPaddlesManager, PaddlesManager>();
 
             return collection.BuildServiceProvider();
         }
