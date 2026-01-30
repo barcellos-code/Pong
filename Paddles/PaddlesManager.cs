@@ -8,13 +8,24 @@ namespace Paddles
 
         private readonly List<Paddle> _paddles = [];
 
-        public void CreatePaddles(int numberOfPaddles, int paddleSize)
+        public void CreatePaddles(int numberOfPaddles, int paddleSize, int stageWidth, int stageHeight)
         {
-            for(var i = 0; i < numberOfPaddles; i++)
+            if (numberOfPaddles < 2)
+                throw new InvalidOperationException("There must be at least 2 paddles.");
+
+            var firstXPos = 1;
+            var lastXPos = stageWidth - 2;
+            var deltaX = (lastXPos - firstXPos) / (numberOfPaddles - 1);
+
+            _paddles.Add(new(paddleSize, firstXPos));
+
+            for (var i = 1; i < numberOfPaddles - 1; i++)
             {
-                var paddle = new Paddle(paddleSize);
-                _paddles.Add(paddle);
-            }    
+                var xPos = firstXPos + deltaX * i;
+                _paddles.Add(new(paddleSize, xPos));
+            }
+
+            _paddles.Add(new(paddleSize, lastXPos));
         }
 
         public Paddle Get(int index)
