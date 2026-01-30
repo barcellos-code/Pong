@@ -2,10 +2,10 @@
 
 namespace Paddles
 {
-    public interface IPaddlesManager
+    public interface IPaddlesManager : IDisposable
     {
         int NumberOfPaddles { get; }
-        void CreatePaddles(IPlayersParameters playersParameters, IPaddlesParameters paddlesParameters);
+        void CreatePaddles(int numberOfPaddles, int paddleSize);
         Paddle Get(int index);
     }
 }

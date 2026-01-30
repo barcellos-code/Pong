@@ -8,16 +8,21 @@ namespace Paddles
 
         private readonly List<Paddle> _paddles = [];
 
-        public void CreatePaddles(IPlayersParameters playersParameters, IPaddlesParameters paddlesParameters)
+        public void CreatePaddles(int numberOfPaddles, int paddleSize)
         {
-            for(var i = 0; i < playersParameters.NumberOfPlayers; i++)
+            for(var i = 0; i < numberOfPaddles; i++)
             {
-                var paddle = new Paddle(paddlesParameters.PaddleSize);
+                var paddle = new Paddle(paddleSize);
                 _paddles.Add(paddle);
             }    
         }
 
         public Paddle Get(int index)
             => _paddles[index];
+
+        public void Dispose()
+        {
+            _paddles.Clear();
+        }
     }
 }

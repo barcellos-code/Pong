@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Paddles;
-using Players;
 using Pong;
 
 namespace Tests
@@ -8,37 +7,94 @@ namespace Tests
     [TestClass]
     public sealed class PaddleTests
     {
-        private static IPlayersParameters _playersParameters;
-        private static IPaddlesParameters _paddlesParameters;
-        private static IPaddlesManager _paddlesManager;
+        private static IPaddlesManager? _paddlesManager;
 
         [ClassInitialize]
         public static void ClassSetup(TestContext testContext)
         {
-            _playersParameters = GameContainer.Provider.GetService<IPlayersParameters>();
-            _paddlesParameters = GameContainer.Provider.GetService<IPaddlesParameters>();
             _paddlesManager = GameContainer.Provider.GetService<IPaddlesManager>();
-            _paddlesManager.CreatePaddles(_playersParameters, _paddlesParameters);
         }
 
         [TestMethod]
         public void TestNumberOfPaddles()
         {
-            var expectedNumberOfPaddles = _playersParameters.NumberOfPlayers;
-            var actualNumberOfPaddles = _paddlesManager.NumberOfPaddles;
+            // Arrange
+            _paddlesManager?.Dispose();
+            var expectedNumberOfPaddles = 0;
 
+            // Act
+            _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5);
+            var actualNumberOfPaddles = _paddlesManager?.NumberOfPaddles;
+
+            // Assert
+            Assert.AreEqual(expectedNumberOfPaddles, actualNumberOfPaddles);
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            expectedNumberOfPaddles = 2;
+
+            // Act
+            _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5);
+            actualNumberOfPaddles = _paddlesManager?.NumberOfPaddles;
+
+            // Assert
+            Assert.AreEqual(expectedNumberOfPaddles, actualNumberOfPaddles);
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            expectedNumberOfPaddles = 5;
+
+            // Act
+            _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5);
+            actualNumberOfPaddles = _paddlesManager?.NumberOfPaddles;
+
+            // Assert
             Assert.AreEqual(expectedNumberOfPaddles, actualNumberOfPaddles);
         }
 
         [TestMethod]
         public void TestPaddleSize()
         {
-            var expectedPaddleSize = _paddlesParameters.PaddleSize;
+            // Arrange
+            _paddlesManager?.Dispose();
+            var expectedPaddleSize = 0;
 
-            for (var i = 0; i < _playersParameters.NumberOfPlayers; i++)
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles: 2, expectedPaddleSize);
+
+            // Assert
+            for (var i = 0; i < 2; i++)
             {
-                var paddle = _paddlesManager.Get(i);
-                Assert.AreEqual(expectedPaddleSize, paddle.Size);
+                var paddle = _paddlesManager?.Get(i);
+                Assert.AreEqual(expectedPaddleSize, paddle?.Size);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            expectedPaddleSize = 5;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles: 2, expectedPaddleSize);
+
+            // Assert
+            for (var i = 0; i < 2; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                Assert.AreEqual(expectedPaddleSize, paddle?.Size);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            expectedPaddleSize = 10;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles: 2, expectedPaddleSize);
+
+            // Assert
+            for (var i = 0; i < 2; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                Assert.AreEqual(expectedPaddleSize, paddle?.Size);
             }
         }
     }
