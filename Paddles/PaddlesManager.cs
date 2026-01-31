@@ -1,6 +1,4 @@
-﻿using Players;
-
-namespace Paddles
+﻿namespace Paddles
 {
     internal class PaddlesManager : IPaddlesManager
     {

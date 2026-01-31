@@ -12,9 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Game\GameStage.csproj" />
+    <ProjectReference Include="..\Game\Stage.csproj" />
     <ProjectReference Include="..\Paddles\Paddles.csproj" />
-    <ProjectReference Include="..\Parameters\Parameters.csproj" />
     <ProjectReference Include="..\Players\Players.csproj" />
   </ItemGroup>
 

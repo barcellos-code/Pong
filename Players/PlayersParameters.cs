@@ -1,6 +1,4 @@
-﻿using Players;
-
-namespace Parameters
+﻿namespace Players
 {
     internal class PlayersParameters : IPlayersParameters
     {
