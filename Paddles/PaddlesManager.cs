@@ -14,16 +14,17 @@
             var firstXPos = 1;
             var lastXPos = stageWidth - 2;
             var deltaX = (lastXPos - firstXPos) / (numberOfPaddles - 1);
+            var actualPaddleSize = int.Min(stageHeight, paddleSize);
 
-            _paddles.Add(new(paddleSize, firstXPos));
+            _paddles.Add(new(actualPaddleSize, firstXPos));
 
             for (var i = 1; i < numberOfPaddles - 1; i++)
             {
                 var xPos = firstXPos + deltaX * i;
-                _paddles.Add(new(paddleSize, xPos));
+                _paddles.Add(new(actualPaddleSize, xPos));
             }
 
-            _paddles.Add(new(paddleSize, lastXPos));
+            _paddles.Add(new(actualPaddleSize, lastXPos));
         }
 
         public Paddle Get(int index)

@@ -60,44 +60,78 @@ namespace Tests
         {
             // Arrange
             _paddlesManager?.Dispose();
+            var numberOfPaddles = 2;
+            var stageWidth = 10;
+            var stageHeight = 10;
+            var inputSize = 0;
             var expectedPaddleSize = 0;
 
             // Act
-            _paddlesManager?.CreatePaddles(numberOfPaddles: 2, expectedPaddleSize, stageWidth: 10, stageHeight: 10);
+            _paddlesManager?.CreatePaddles(numberOfPaddles, inputSize, stageWidth, stageHeight);
 
             // Assert
             for (var i = 0; i < 2; i++)
             {
                 var paddle = _paddlesManager?.Get(i);
-                Assert.AreEqual(expectedPaddleSize, paddle?.Size);
+                var actualSize = paddle?.Size;
+                Assert.AreEqual(expectedPaddleSize, actualSize);
             }
 
             // Arrange
             _paddlesManager?.Dispose();
+            numberOfPaddles = 2;
+            stageWidth = 10;
+            stageHeight = 10;
+            inputSize = 5;
             expectedPaddleSize = 5;
 
             // Act
-            _paddlesManager?.CreatePaddles(numberOfPaddles: 2, expectedPaddleSize, stageWidth: 10, stageHeight: 10);
+            _paddlesManager?.CreatePaddles(numberOfPaddles, inputSize, stageWidth, stageHeight);
 
             // Assert
             for (var i = 0; i < 2; i++)
             {
                 var paddle = _paddlesManager?.Get(i);
-                Assert.AreEqual(expectedPaddleSize, paddle?.Size);
+                var actualSize = paddle?.Size;
+                Assert.AreEqual(expectedPaddleSize, actualSize);
             }
 
             // Arrange
             _paddlesManager?.Dispose();
+            numberOfPaddles = 2;
+            stageWidth = 10;
+            stageHeight = 10;
+            inputSize = 10;
             expectedPaddleSize = 10;
 
             // Act
-            _paddlesManager?.CreatePaddles(numberOfPaddles: 2, expectedPaddleSize, stageWidth: 10, stageHeight: 10);
+            _paddlesManager?.CreatePaddles(numberOfPaddles, inputSize, stageWidth, stageHeight);
 
             // Assert
             for (var i = 0; i < 2; i++)
             {
                 var paddle = _paddlesManager?.Get(i);
-                Assert.AreEqual(expectedPaddleSize, paddle?.Size);
+                var actualSize = paddle?.Size;
+                Assert.AreEqual(expectedPaddleSize, actualSize);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            numberOfPaddles = 2;
+            stageWidth = 10;
+            stageHeight = 5;
+            inputSize = 10;
+            expectedPaddleSize = 5;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles, inputSize, stageWidth, stageHeight);
+
+            // Assert
+            for (var i = 0; i < 2; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                var actualSize = paddle?.Size;
+                Assert.AreEqual(expectedPaddleSize, actualSize);
             }
         }
 
