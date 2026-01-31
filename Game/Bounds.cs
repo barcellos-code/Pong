@@ -1,4 +1,4 @@
-﻿namespace GameStage
+﻿namespace Stage
 {
     public readonly struct Bounds (int width, int height)
     {

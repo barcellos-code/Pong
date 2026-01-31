@@ -1,18 +1,18 @@
-﻿using GameStage;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Pong;
+using Stage;
 
 namespace Tests
 {
     [TestClass]
     public sealed class GameStageTests
     {
-        private static IGameStage? _gameStage;
+        private static IStage? _gameStage;
 
         [ClassInitialize]
         public static void ClassSetup(TestContext testContext)
         {
-            _gameStage = GameContainer.Provider.GetService<IGameStage>();
+            _gameStage = GameContainer.Provider.GetService<IStage>();
         }
 
         [TestMethod]

@@ -1,8 +1,8 @@
-﻿using GameStage;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Paddles;
 using Parameters;
 using Players;
+using Stage;
 
 namespace Pong
 {
@@ -27,8 +27,8 @@ namespace Pong
             var collection = new ServiceCollection();
 
             // Services
-            collection.AddSingleton<IGameStage, PongGameStage>();
-            collection.AddSingleton<IGameStageParameters, PongGameStageParameters>();
+            collection.AddSingleton<IStage, PongStage>();
+            collection.AddSingleton<IStageParameters, PongGameStageParameters>();
             collection.AddSingleton<IPlayersManager, PlayersManager>();
             collection.AddSingleton<IPlayersParameters, PlayersParameters>();
             collection.AddSingleton<IPaddlesManager, PaddlesManager>();

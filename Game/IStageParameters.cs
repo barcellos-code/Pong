@@ -1,6 +1,6 @@
-﻿namespace GameStage
+﻿namespace Stage
 {
-    public interface IGameStageParameters
+    public interface IStageParameters
     {
         int Width { get; }
         int Height { get; }

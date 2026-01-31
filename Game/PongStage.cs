@@ -1,6 +1,6 @@
-﻿namespace GameStage
+﻿namespace Stage
 {
-    internal class PongGameStage : IGameStage
+    internal class PongStage : IStage
     {
         public Bounds Bounds { get; private set; }
 
