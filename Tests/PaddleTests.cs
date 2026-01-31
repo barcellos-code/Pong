@@ -23,21 +23,26 @@ namespace Tests
             var expectedNumberOfPaddles = 0;
 
             // Assert
-            Assert.Throws<InvalidOperationException>(() => _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5, stageWidth: 10, stageHeight: 10));
+            Assert.Throws<InvalidOperationException>(() => _paddlesManager?
+                .CreatePaddles(expectedNumberOfPaddles, paddleSize: 5, stageWidth: 10,
+                stageHeight: 10));
 
             // Arrange
             _paddlesManager?.Dispose();
             expectedNumberOfPaddles = 1;
 
             // Assert
-            Assert.Throws<InvalidOperationException>(() => _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5, stageWidth: 10, stageHeight: 10));
+            Assert.Throws<InvalidOperationException>(() => _paddlesManager?
+                .CreatePaddles(expectedNumberOfPaddles, paddleSize: 5, stageWidth: 10,
+                stageHeight: 10));
 
             // Arrange
             _paddlesManager?.Dispose();
             expectedNumberOfPaddles = 2;
 
             // Act
-            _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5, stageWidth: 10, stageHeight: 10);
+            _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5,
+                stageWidth: 10, stageHeight: 10);
             var actualNumberOfPaddles = _paddlesManager?.NumberOfPaddles;
 
             // Assert
@@ -48,7 +53,8 @@ namespace Tests
             expectedNumberOfPaddles = 5;
 
             // Act
-            _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5, stageWidth: 10, stageHeight: 10);
+            _paddlesManager?.CreatePaddles(expectedNumberOfPaddles, paddleSize: 5,
+                stageWidth: 10, stageHeight: 10);
             actualNumberOfPaddles = _paddlesManager?.NumberOfPaddles;
 
             // Assert
@@ -136,7 +142,7 @@ namespace Tests
         }
 
         [TestMethod]
-        public void TestPaddlesHorizontalPositionOnCreation()
+        public void TestPaddlesHorizontalPlacement()
         {
             // Arrange
             _paddlesManager?.Dispose();
@@ -148,7 +154,8 @@ namespace Tests
             var secondPaddleExpectedXPos = 8;
 
             // Act
-            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth, stageHeight);
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
 
             // Assert
             Assert.AreEqual(_paddlesManager?.Get(0).PositionX, firstPaddleExpectedXPos);
@@ -164,7 +171,8 @@ namespace Tests
             secondPaddleExpectedXPos = 48;
 
             // Act
-            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth, stageHeight);
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
 
             // Assert
             Assert.AreEqual(_paddlesManager?.Get(0).PositionX, firstPaddleExpectedXPos);
@@ -181,7 +189,8 @@ namespace Tests
             var thirdPaddleExpectedXPos = 39;
 
             // Act
-            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth, stageHeight);
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
 
             // Assert
             Assert.AreEqual(_paddlesManager?.Get(0).PositionX, firstPaddleExpectedXPos);
@@ -199,7 +208,8 @@ namespace Tests
             thirdPaddleExpectedXPos = 38;
 
             // Act
-            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth, stageHeight);
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
 
             // Assert
             Assert.AreEqual(_paddlesManager?.Get(0).PositionX, firstPaddleExpectedXPos);
@@ -219,7 +229,8 @@ namespace Tests
             var fifthPaddleExpectedXPos = 39;
 
             // Act
-            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth, stageHeight);
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
 
             // Assert
             Assert.AreEqual(_paddlesManager?.Get(0).PositionX, firstPaddleExpectedXPos);
@@ -227,6 +238,150 @@ namespace Tests
             Assert.AreEqual(_paddlesManager?.Get(2).PositionX, thirdPaddleExpectedXPos);
             Assert.AreEqual(_paddlesManager?.Get(3).PositionX, fourthPaddleExpectedXPos);
             Assert.AreEqual(_paddlesManager?.Get(4).PositionX, fifthPaddleExpectedXPos);
+        }
+
+        [TestMethod]
+        public void TestPaddlesVerticalPlacement()
+        {
+            // Arrange
+            _paddlesManager?.Dispose();
+            var stageWidth = 10;
+            var stageHeight = 5;
+            var numberOfPaddles = 2;
+            var paddleSize = 1;
+            var expectedPositionY = 2;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+
+            // Assert
+            for (var i = 0; i < _paddlesManager?.NumberOfPaddles; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                var actualPositionY = paddle?.PositionY;
+                Assert.AreEqual(expectedPositionY, actualPositionY);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            stageWidth = 10;
+            stageHeight = 5;
+            numberOfPaddles = 2;
+            paddleSize = 3;
+            expectedPositionY = 1;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+
+            // Assert
+            for (var i = 0; i < _paddlesManager?.NumberOfPaddles; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                var actualPositionY = paddle?.PositionY;
+                Assert.AreEqual(expectedPositionY, actualPositionY);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            stageWidth = 10;
+            stageHeight = 5;
+            numberOfPaddles = 2;
+            paddleSize = 5;
+            expectedPositionY = 0;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+
+            // Assert
+            for (var i = 0; i < _paddlesManager?.NumberOfPaddles; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                var actualPositionY = paddle?.PositionY;
+                Assert.AreEqual(expectedPositionY, actualPositionY);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            stageWidth = 10;
+            stageHeight = 10;
+            numberOfPaddles = 2;
+            paddleSize = 3;
+            expectedPositionY = 4;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+
+            // Assert
+            for (var i = 0; i < _paddlesManager?.NumberOfPaddles; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                var actualPositionY = paddle?.PositionY;
+                Assert.AreEqual(expectedPositionY, actualPositionY);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            stageWidth = 10;
+            stageHeight = 10;
+            numberOfPaddles = 2;
+            paddleSize = 5;
+            expectedPositionY = 3;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+
+            // Assert
+            for (var i = 0; i < _paddlesManager?.NumberOfPaddles; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                var actualPositionY = paddle?.PositionY;
+                Assert.AreEqual(expectedPositionY, actualPositionY);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            stageWidth = 10;
+            stageHeight = 20;
+            numberOfPaddles = 2;
+            paddleSize = 5;
+            expectedPositionY = 8;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+
+            // Assert
+            for (var i = 0; i < _paddlesManager?.NumberOfPaddles; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                var actualPositionY = paddle?.PositionY;
+                Assert.AreEqual(expectedPositionY, actualPositionY);
+            }
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            stageWidth = 10;
+            stageHeight = 20;
+            numberOfPaddles = 2;
+            paddleSize = 9;
+            expectedPositionY = 6;
+
+            // Act
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+
+            // Assert
+            for (var i = 0; i < _paddlesManager?.NumberOfPaddles; i++)
+            {
+                var paddle = _paddlesManager?.Get(i);
+                var actualPositionY = paddle?.PositionY;
+                Assert.AreEqual(expectedPositionY, actualPositionY);
+            }
         }
     }
 }

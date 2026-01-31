@@ -6,7 +6,8 @@
 
         private readonly List<Paddle> _paddles = [];
 
-        public void CreatePaddles(int numberOfPaddles, int paddleSize, int stageWidth, int stageHeight)
+        public void CreatePaddles(int numberOfPaddles, int paddleSize, int stageWidth,
+            int stageHeight)
         {
             if (numberOfPaddles < 2)
                 throw new InvalidOperationException("There must be at least 2 paddles.");
@@ -15,16 +16,17 @@
             var lastXPos = stageWidth - 2;
             var deltaX = (lastXPos - firstXPos) / (numberOfPaddles - 1);
             var actualPaddleSize = int.Min(stageHeight, paddleSize);
+            var yPos = (stageHeight / 2) - (actualPaddleSize / 2);
 
-            _paddles.Add(new(actualPaddleSize, firstXPos));
+            _paddles.Add(new(actualPaddleSize, firstXPos, yPos));
 
             for (var i = 1; i < numberOfPaddles - 1; i++)
             {
                 var xPos = firstXPos + deltaX * i;
-                _paddles.Add(new(actualPaddleSize, xPos));
+                _paddles.Add(new(actualPaddleSize, xPos, yPos));
             }
 
-            _paddles.Add(new(actualPaddleSize, lastXPos));
+            _paddles.Add(new(actualPaddleSize, lastXPos, yPos));
         }
 
         public Paddle Get(int index)
