@@ -383,5 +383,75 @@ namespace Tests
                 Assert.AreEqual(expectedPositionY, actualPositionY);
             }
         }
+
+        [TestMethod]
+        public void TestPaddlesMovement()
+        {
+            // Arrange
+            _paddlesManager?.Dispose();
+            var numberOfPaddles = 2;
+            var paddleSize = 5;
+            var stageWidth = 30;
+            var stageHeight = 15;
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth, stageHeight);
+            var firstPaddle = _paddlesManager?.Get(0);
+            var secondPaddle = _paddlesManager?.Get(1);
+            var firstPaddleInitialPosY = firstPaddle?.PositionY;
+            var secondPaddleInitialPosY = secondPaddle?.PositionY;
+            var firstPaddleExpectedFinalPosY = firstPaddleInitialPosY + 1;
+            var secondPaddleExpectedFinalPosY = secondPaddleInitialPosY - 1;
+
+            // Act
+            firstPaddle?.MoveUp();
+            secondPaddle?.MoveDown();
+            var firstPaddleActualFinalPosY = firstPaddle?.PositionY;
+            var secondPaddleActualFinalPosY = secondPaddle?.PositionY;
+
+            // Assert
+            Assert.AreEqual(firstPaddleExpectedFinalPosY, firstPaddleActualFinalPosY);
+            Assert.AreEqual(secondPaddleExpectedFinalPosY, secondPaddleActualFinalPosY);
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth, stageHeight);
+            firstPaddle = _paddlesManager?.Get(0);
+            secondPaddle = _paddlesManager?.Get(1);
+            firstPaddleInitialPosY = firstPaddle?.PositionY;
+            secondPaddleInitialPosY = secondPaddle?.PositionY;
+            firstPaddleExpectedFinalPosY = firstPaddleInitialPosY - 1;
+            secondPaddleExpectedFinalPosY = secondPaddleInitialPosY + 1;
+
+            // Act
+            firstPaddle?.MoveDown();
+            secondPaddle?.MoveUp();
+            firstPaddleActualFinalPosY = firstPaddle?.PositionY;
+            secondPaddleActualFinalPosY = secondPaddle?.PositionY;
+
+            // Assert
+            Assert.AreEqual(firstPaddleExpectedFinalPosY, firstPaddleActualFinalPosY);
+            Assert.AreEqual(secondPaddleExpectedFinalPosY, secondPaddleActualFinalPosY);
+
+            // Arrange
+            _paddlesManager?.Dispose();
+            _paddlesManager?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth, stageHeight);
+            firstPaddle = _paddlesManager?.Get(0);
+            secondPaddle = _paddlesManager?.Get(1);
+            firstPaddleInitialPosY = firstPaddle?.PositionY;
+            secondPaddleInitialPosY = secondPaddle?.PositionY;
+            firstPaddleExpectedFinalPosY = 0;
+            secondPaddleExpectedFinalPosY = 9;
+
+            // Act
+            for (var i = 0; i < 100; i++)
+                firstPaddle?.MoveDown();
+            for (var i = 0; i < 100; i++)
+                secondPaddle?.MoveUp();
+            firstPaddleActualFinalPosY = firstPaddle?.PositionY;
+            secondPaddleActualFinalPosY = secondPaddle?.PositionY;
+
+            // Assert
+            Assert.AreEqual(firstPaddleExpectedFinalPosY, firstPaddleActualFinalPosY);
+            Assert.AreEqual(secondPaddleExpectedFinalPosY, secondPaddleActualFinalPosY);
+        }
     }
 }

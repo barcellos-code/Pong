@@ -18,18 +18,18 @@
             var actualPaddleSize = int.Min(stageHeight, paddleSize);
             var yPos = (stageHeight / 2) - (actualPaddleSize / 2);
 
-            _paddles.Add(new(actualPaddleSize, firstXPos, yPos));
+            _paddles.Add(new(actualPaddleSize, firstXPos, yPos, stageHeight));
 
             for (var i = 1; i < numberOfPaddles - 1; i++)
             {
                 var xPos = firstXPos + deltaX * i;
-                _paddles.Add(new(actualPaddleSize, xPos, yPos));
+                _paddles.Add(new(actualPaddleSize, xPos, yPos, stageHeight));
             }
 
-            _paddles.Add(new(actualPaddleSize, lastXPos, yPos));
+            _paddles.Add(new(actualPaddleSize, lastXPos, yPos, stageHeight));
         }
 
-        public Paddle Get(int index)
+        public IPaddle Get(int index)
             => _paddles[index];
 
         public void Dispose()

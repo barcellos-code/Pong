@@ -8,6 +8,7 @@
 [X] Paddles are placed on each side of the screen when created
 [X] Paddles size bigger than stage height?
 [X] Paddles are placed at half the game bounds height when created
+[X] Paddles move up and down
 [ ] Paddles move up and down on players input
 [ ] Paddles' movement is limited by the top and bottom game bounds
 

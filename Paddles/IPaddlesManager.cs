@@ -4,6 +4,6 @@
     {
         int NumberOfPaddles { get; }
         void CreatePaddles(int numberOfPaddles, int paddleSize, int stageWidth, int stageHeight);
-        Paddle Get(int index);
+        IPaddle Get(int index);
     }
 }
