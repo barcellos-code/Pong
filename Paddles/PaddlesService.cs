@@ -1,6 +1,6 @@
 ﻿namespace Paddles
 {
-    internal class PaddlesManager : IPaddlesManager
+    internal class PaddlesService : IPaddlesService
     {
         public int NumberOfPaddles => _paddles.Count;
 
@@ -29,12 +29,18 @@
             _paddles.Add(new(actualPaddleSize, lastXPos, yPos, stageHeight));
         }
 
-        public IPaddle Get(int index)
-            => _paddles[index];
+        public IPaddle GetPaddle(int index)
+        {
+            if (NumberOfPaddles == 0)
+                throw new InvalidOperationException("Paddles have not been created.");
+
+            if (index < 0 || index >= NumberOfPaddles)
+                throw new IndexOutOfRangeException();
+
+            return _paddles[index];
+        }
 
         public void Dispose()
-        {
-            _paddles.Clear();
-        }
+            => _paddles.Clear();
     }
 }

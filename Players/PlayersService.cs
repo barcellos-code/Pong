@@ -1,12 +1,12 @@
 ﻿namespace Players
 {
-    internal class PlayersManager : IPlayersManager, IDisposable
+    internal class PlayersService : IPlayersService, IDisposable
     {
         public int NumberOfPlayers => _players.Count;
 
         private readonly List<Player> _players = [];
 
-        public void Create(int numberOfPlayers)
+        public void CreatePlayers(int numberOfPlayers)
         {
             for (var i = 0; i < numberOfPlayers; i++)
             {
@@ -16,8 +16,6 @@
         }
 
         public void Dispose()
-        {
-            _players.Clear();
-        }
+            => _players.Clear();
     }
 }

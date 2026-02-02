@@ -1,9 +1,9 @@
 ﻿namespace Paddles
 {
-    public interface IPaddlesManager : IDisposable
+    public interface IPaddlesService : IDisposable
     {
         int NumberOfPaddles { get; }
         void CreatePaddles(int numberOfPaddles, int paddleSize, int stageWidth, int stageHeight);
-        IPaddle Get(int index);
+        IPaddle GetPaddle(int index);
     }
 }

@@ -7,12 +7,12 @@ namespace Tests
     [TestClass]
     public sealed class PlayersTests
     {
-        private static IPlayersManager? _playersManager;
+        private static IPlayersService? _playersService;
 
         [ClassInitialize]
         public static void ClassSetup(TestContext testContext)
         {
-            _playersManager = GameContainer.Provider.GetService<IPlayersManager>();
+            _playersService = GameContainer.Provider.GetService<IPlayersService>();
         }
 
         [TestMethod]
@@ -22,41 +22,41 @@ namespace Tests
             var expectedNumberOfPlayers = 0;
 
             // Act
-            _playersManager?.Create(expectedNumberOfPlayers);
-            var actualNumberOfPlayers = _playersManager?.NumberOfPlayers;
+            _playersService?.CreatePlayers(expectedNumberOfPlayers);
+            var actualNumberOfPlayers = _playersService?.NumberOfPlayers;
 
             // Assert
             Assert.AreEqual(expectedNumberOfPlayers, actualNumberOfPlayers);
 
             // Arrange
-            _playersManager?.Dispose();
+            _playersService?.Dispose();
             expectedNumberOfPlayers = 1;
 
             // Act
-            _playersManager?.Create(expectedNumberOfPlayers);
-            actualNumberOfPlayers = _playersManager?.NumberOfPlayers;
+            _playersService?.CreatePlayers(expectedNumberOfPlayers);
+            actualNumberOfPlayers = _playersService?.NumberOfPlayers;
 
             // Assert
             Assert.AreEqual(expectedNumberOfPlayers, actualNumberOfPlayers);
 
             // Arrange
-            _playersManager?.Dispose();
+            _playersService?.Dispose();
             expectedNumberOfPlayers = 2;
 
             // Act
-            _playersManager?.Create(expectedNumberOfPlayers);
-            actualNumberOfPlayers = _playersManager?.NumberOfPlayers;
+            _playersService?.CreatePlayers(expectedNumberOfPlayers);
+            actualNumberOfPlayers = _playersService?.NumberOfPlayers;
 
             // Assert
             Assert.AreEqual(expectedNumberOfPlayers, actualNumberOfPlayers);
 
             // Arrange
-            _playersManager?.Dispose();
+            _playersService?.Dispose();
             expectedNumberOfPlayers = 5;
 
             // Act
-            _playersManager?.Create(expectedNumberOfPlayers);
-            actualNumberOfPlayers = _playersManager?.NumberOfPlayers;
+            _playersService?.CreatePlayers(expectedNumberOfPlayers);
+            actualNumberOfPlayers = _playersService?.NumberOfPlayers;
 
             // Assert
             Assert.AreEqual(expectedNumberOfPlayers, actualNumberOfPlayers);

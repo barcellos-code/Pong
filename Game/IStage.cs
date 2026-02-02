@@ -1,8 +1,8 @@
 ﻿namespace Stage
 {
-    public interface IStage : IDisposable
+    public interface IStage
     {
-        Bounds Bounds { get; }
-        void Create(int width, int height);
+        int Width { get; }
+        int Height { get; }
     }
 }
