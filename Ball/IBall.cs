@@ -4,5 +4,7 @@
     {
         int PositionX { get; }
         int PositionY { get; }
+        int DirectionX { get; }
+        int DirectionY { get; }
     }
 }
