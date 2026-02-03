@@ -8,7 +8,7 @@
         {
             var posX = stageWidth / 2;
             var posY = stageHeight / 2;
-            _ball = new(posX, posY, directionX, directionY);
+            _ball = new(posX, posY, directionX, directionY, stageHeight);
         }
 
         public void Dispose()
