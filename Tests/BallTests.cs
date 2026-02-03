@@ -17,6 +17,20 @@ namespace Tests
             _paddlesService = PaddlesContainer.ServiceProvider.GetService<IPaddlesService>();
         }
 
+        [TestInitialize]
+        public void TestSetup()
+        {
+            _ballService?.Dispose();
+            _paddlesService?.Dispose();
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            _ballService?.Dispose();
+            _paddlesService?.Dispose();
+        }
+
         [TestMethod]
         public void TestBallPlacement()
         {
@@ -495,6 +509,52 @@ namespace Tests
 
             // Assert
             Assert.AreEqual(expectedBallPosX, actualBallPosX);
+        }
+
+        [TestMethod]
+        public void TestBallReset()
+        {
+            // Arrange
+            _ballService?.Dispose();
+            var stageWidth = 11;
+            var stageHeight = 100;
+            var directionX = 1;
+            var directionY = 1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            var ball = _ballService?.GetBall();
+            var expectedBallPosX = 5;
+            var expectedBallPosY = 50;
+
+            // Act
+            for (var i = 1; i <= 6; i++)
+                ball?.Move();
+            var actualBallPosX = ball?.PositionX;
+            var actualBallPosY = ball?.PositionY;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+            Assert.AreEqual(expectedBallPosY, actualBallPosY);
+
+            // Arrange
+            _ballService?.Dispose();
+            stageWidth = 20;
+            stageHeight = 5;
+            directionX = -1;
+            directionY = -1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            ball = _ballService?.GetBall();
+            expectedBallPosX = 10;
+            expectedBallPosY = 2;
+
+            // Act
+            for (var i = 1; i <= 11; i++)
+                ball?.Move();
+            actualBallPosX = ball?.PositionX;
+            actualBallPosY = ball?.PositionY;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+            Assert.AreEqual(expectedBallPosY, actualBallPosY);
         }
     }
 }
