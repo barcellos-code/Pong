@@ -1,6 +1,6 @@
 ﻿using Ball;
 using Microsoft.Extensions.DependencyInjection;
-using Pong;
+using Paddles;
 
 namespace Tests
 {
@@ -8,11 +8,13 @@ namespace Tests
     public sealed class BallTests
     {
         private static IBallService? _ballService;
+        private static IPaddlesService? _paddlesService;
 
         [ClassInitialize]
         public static void ClassSetup(TestContext testContext)
         {
-            _ballService = GameContainer.Provider.GetService<IBallService>();
+            _ballService = BallContainer.ServiceProvider.GetService<IBallService>();
+            _paddlesService = PaddlesContainer.ServiceProvider.GetService<IPaddlesService>();
         }
 
         [TestMethod]
@@ -288,7 +290,7 @@ namespace Tests
         }
 
         [TestMethod]
-        public void TestBouncingOnStageBounds()
+        public void TestBouncingOffStageBounds()
         {
             // Arrange
             _ballService?.Dispose();
@@ -355,6 +357,144 @@ namespace Tests
 
             // Assert
             Assert.AreEqual(expectedBallPosY, actualBallPosY);
+        }
+
+        [TestMethod]
+        public void TestBouncingOffPaddles()
+        {
+            // Arrange
+            _ballService?.Dispose();
+            _paddlesService?.Dispose();
+            var stageWidth = 7;
+            var stageHeight = 1000;
+            var paddleSize = 990;
+            var numberOfPaddles = 2;
+            _paddlesService?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+            var directionX = 1;
+            var directionY = 1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            var ball = _ballService?.GetBall();
+            var expectedBallPosX = 3;
+
+            // Act
+            for (var i = 1; i <= 2; i++)
+                ball?.Move();
+            var actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+
+            // Arrange
+            expectedBallPosX = 2;
+
+            // Act
+            ball?.Move();
+            actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+
+            // Arrange
+            expectedBallPosX = 3;
+
+            // Act
+            ball?.Move();
+            actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+
+            // Arrange
+            expectedBallPosX = 4;
+
+            // Act
+            ball?.Move();
+            actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+
+            // Arrange
+            expectedBallPosX = 3;
+
+            // Act
+            ball?.Move();
+            actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+
+            // Arrange
+            _ballService?.Dispose();
+            _paddlesService?.Dispose();
+            stageWidth = 11;
+            stageHeight = 50;
+            paddleSize = 3;
+            numberOfPaddles = 2;
+            _paddlesService?.CreatePaddles(numberOfPaddles, paddleSize, stageWidth,
+                stageHeight);
+            directionX = 1;
+            directionY = 1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            ball = _ballService?.GetBall();
+            expectedBallPosX = 10;
+
+            // Act
+            for (var i = 1; i <= 5; i++)
+                ball?.Move();
+            actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+
+            // Arrange
+            _ballService?.Dispose();
+            directionX = 1;
+            directionY = -1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            ball = _ballService?.GetBall();
+            expectedBallPosX = 10;
+
+            // Act
+            for (var i = 1; i <= 5; i++)
+                ball?.Move();
+            actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+
+            // Arrange
+            _ballService?.Dispose();
+            directionX = -1;
+            directionY = 1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            ball = _ballService?.GetBall();
+            expectedBallPosX = 0;
+
+            // Act
+            for (var i = 1; i <= 5; i++)
+                ball?.Move();
+            actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
+
+            // Arrange
+            _ballService?.Dispose();
+            directionX = -1;
+            directionY = -1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            ball = _ballService?.GetBall();
+            expectedBallPosX = 0;
+
+            // Act
+            for (var i = 1; i <= 5; i++)
+                ball?.Move();
+            actualBallPosX = ball?.PositionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallPosX, actualBallPosX);
         }
     }
 }

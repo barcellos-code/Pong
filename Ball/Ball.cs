@@ -1,4 +1,7 @@
-﻿namespace Ball
+﻿using Microsoft.Extensions.DependencyInjection;
+using Paddles;
+
+namespace Ball
 {
     internal class Ball(int posX, int posY, int dirX, int dirY, int stageHeight) : IBall
     {
@@ -15,6 +18,7 @@
         public void Move()
         {
             BounceOffStageBounds();
+            BounceOffPaddles();
 
             PositionX += DirectionX;
             PositionY += DirectionY;
@@ -25,6 +29,35 @@
             if (PositionY >= _stageHeight - 1
                 || PositionY <= 0)
                 DirectionY *= -1;
+        }
+
+        private void BounceOffPaddles()
+        {
+            var paddlesService = PaddlesContainer.ServiceProvider
+                .GetService<IPaddlesService>();
+            
+            for (var i = 0; i < paddlesService?.NumberOfPaddles; i++)
+            {
+                var paddle = paddlesService?.GetPaddle(i);
+
+                var isBallTouchingPaddleFromTheRight
+                    = DirectionX < 0 && PositionX == paddle?.PositionX + 1;
+                
+                var isBallTouchingPaddleFromTheLeft
+                    = DirectionX > 0 && PositionX == paddle?.PositionX - 1;
+                
+                var isBallVerticallyAlignedWithPaddle
+                    = PositionY >= paddle?.PositionY
+                        && PositionY <= paddle?.PositionY + paddle?.Size;
+                
+                if (isBallVerticallyAlignedWithPaddle
+                    && (isBallTouchingPaddleFromTheRight
+                        || isBallTouchingPaddleFromTheLeft))
+                {
+                    DirectionX *= -1;
+                    return;
+                }
+            }
         }
     }
 }

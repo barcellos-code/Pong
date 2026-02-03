@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Paddles;
-using Pong;
 
 namespace Tests
 {
@@ -12,7 +11,7 @@ namespace Tests
         [ClassInitialize]
         public static void ClassSetup(TestContext testContext)
         {
-            _paddlesService = GameContainer.Provider.GetService<IPaddlesService>();
+            _paddlesService = PaddlesContainer.ServiceProvider.GetService<IPaddlesService>();
         }
 
         [TestMethod]

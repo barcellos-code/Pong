@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Players;
-using Pong;
 
 namespace Tests
 {
@@ -12,17 +11,19 @@ namespace Tests
         [ClassInitialize]
         public static void ClassSetup(TestContext testContext)
         {
-            _playersService = GameContainer.Provider.GetService<IPlayersService>();
+            _playersService = PlayersContainer.ServiceProvider.GetService<IPlayersService>();
         }
 
         [TestMethod]
         public void TestNumberOfPlayers()
         {
             // Arrange
+            _playersService?.Dispose();
+            var inputNumberOfPlayers = 0;
             var expectedNumberOfPlayers = 0;
 
             // Act
-            _playersService?.CreatePlayers(expectedNumberOfPlayers);
+            _playersService?.CreatePlayers(inputNumberOfPlayers);
             var actualNumberOfPlayers = _playersService?.NumberOfPlayers;
 
             // Assert
@@ -30,10 +31,11 @@ namespace Tests
 
             // Arrange
             _playersService?.Dispose();
+            inputNumberOfPlayers = 1;
             expectedNumberOfPlayers = 1;
 
             // Act
-            _playersService?.CreatePlayers(expectedNumberOfPlayers);
+            _playersService?.CreatePlayers(inputNumberOfPlayers);
             actualNumberOfPlayers = _playersService?.NumberOfPlayers;
 
             // Assert
@@ -41,10 +43,11 @@ namespace Tests
 
             // Arrange
             _playersService?.Dispose();
+            inputNumberOfPlayers = 2;
             expectedNumberOfPlayers = 2;
 
             // Act
-            _playersService?.CreatePlayers(expectedNumberOfPlayers);
+            _playersService?.CreatePlayers(inputNumberOfPlayers);
             actualNumberOfPlayers = _playersService?.NumberOfPlayers;
 
             // Assert
@@ -52,10 +55,11 @@ namespace Tests
 
             // Arrange
             _playersService?.Dispose();
+            inputNumberOfPlayers = 5;
             expectedNumberOfPlayers = 5;
 
             // Act
-            _playersService?.CreatePlayers(expectedNumberOfPlayers);
+            _playersService?.CreatePlayers(inputNumberOfPlayers);
             actualNumberOfPlayers = _playersService?.NumberOfPlayers;
 
             // Assert

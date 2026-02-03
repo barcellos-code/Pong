@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Pong;
 using Stage;
 
 namespace Tests
@@ -12,7 +11,7 @@ namespace Tests
         [ClassInitialize]
         public static void ClassSetup(TestContext testContext)
         {
-            _stageService = GameContainer.Provider.GetService<IStageService>();
+            _stageService = StageContainer.ServiceProvider.GetService<IStageService>();
         }
 
         [TestMethod]

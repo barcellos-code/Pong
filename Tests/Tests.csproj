@@ -16,7 +16,6 @@
     <ProjectReference Include="..\Stage\Stage.csproj" />
     <ProjectReference Include="..\Paddles\Paddles.csproj" />
     <ProjectReference Include="..\Players\Players.csproj" />
-    <ProjectReference Include="..\Pong\Pong.csproj" />
   </ItemGroup>
 
   <ItemGroup>
