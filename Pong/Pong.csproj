@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ball\Ball.csproj" />
-    <ProjectReference Include="..\Game\Stage.csproj" />
+    <ProjectReference Include="..\Stage\Stage.csproj" />
     <ProjectReference Include="..\Paddles\Paddles.csproj" />
     <ProjectReference Include="..\Players\Players.csproj" />
   </ItemGroup>

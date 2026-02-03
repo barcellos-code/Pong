@@ -1,7 +1,7 @@
 <Solution>
   <Project Path="Ball/Ball.csproj" Id="51811c62-0b58-439f-b9f9-d447ff711c61" />
   <Project Path="ExampleCode/ExampleCode.csproj" />
-  <Project Path="Game/Stage.csproj" Id="cd927a54-09ce-4cf6-96e2-148107972554" />
+  <Project Path="Stage/Stage.csproj" Id="cd927a54-09ce-4cf6-96e2-148107972554" />
   <Project Path="Paddles/Paddles.csproj" Id="81298e6c-ac95-4238-b076-2a0f04f71862" />
   <Project Path="Players/Players.csproj" Id="81bd96c0-c586-4041-8b55-91ee0927145a" />
   <Project Path="Pong/Pong.csproj" />
