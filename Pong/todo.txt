@@ -22,6 +22,6 @@
 [ ] Ball moves on game tick
 
 [X] Game has two players when created
-[ ] Players start each with score equal to zero when game is created
+[X] Players start each with score equal to zero when game is created
 [ ] Player scores when ball hits right or left game bounds
 [ ] Game ends when a player hits a predetermined score

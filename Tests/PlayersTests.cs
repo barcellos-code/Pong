@@ -11,7 +11,20 @@ namespace Tests
         [ClassInitialize]
         public static void ClassSetup(TestContext testContext)
         {
-            _playersService = PlayersContainer.ServiceProvider.GetService<IPlayersService>();
+            _playersService = PlayersContainer.ServiceProvider
+                .GetService<IPlayersService>();
+        }
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            _playersService?.Dispose();
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            _playersService?.Dispose();
         }
 
         [TestMethod]
@@ -64,6 +77,26 @@ namespace Tests
 
             // Assert
             Assert.AreEqual(expectedNumberOfPlayers, actualNumberOfPlayers);
+        }
+
+        [TestMethod]
+        public void TestInitialPlayerScores()
+        {
+            // Arrange
+            _playersService?.Dispose();
+            var numberOfPlayers = 5;
+            var expectedScoreValue = 0;
+
+            // Act
+            _playersService?.CreatePlayers(numberOfPlayers);
+
+            // Assert
+            for (var i = 0; i < _playersService?.NumberOfPlayers; i++)
+            {
+                var player = _playersService?.GetPlayer(i);
+                var actualScoreValue = player?.Score;
+                Assert.AreEqual(expectedScoreValue, actualScoreValue);
+            }
         }
     }
 }

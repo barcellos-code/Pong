@@ -15,6 +15,17 @@
             }
         }
 
+        public IPlayer GetPlayer(int index)
+        {
+            if (NumberOfPlayers == 0)
+                throw new InvalidOperationException("Players have not been created.");
+            
+            if (index < 0 || index >= NumberOfPlayers)
+                throw new IndexOutOfRangeException();
+            
+            return _players[index];
+        }
+
         public void Dispose()
             => _players.Clear();
     }
