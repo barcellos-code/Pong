@@ -17,7 +17,7 @@
 [X] Ball bounces off top and bottom stage bounds
 [X] Ball bounces off paddles
 [X] Ball resets back to stage center when it touches left and right stage bounds
-[ ] Ball reverses horizontal direction when it resets back to stage center
+[X] Ball inverts horizontal direction when it resets back to stage center
 
 [ ] Ball moves on game tick
 

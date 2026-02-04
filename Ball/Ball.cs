@@ -71,12 +71,14 @@ namespace Ball
             if (PositionX >= _stageWidth)
             {
                 ResetPosition();
+                InvertDirectionX();
                 return;
             }
 
             if (PositionX < 0)
             {
                 ResetPosition();
+                InvertDirectionX();
                 return;
             }
 
@@ -85,6 +87,9 @@ namespace Ball
                 PositionX = _initialPosX;
                 PositionY = _initialPosY;
             }
+
+            void InvertDirectionX()
+                => DirectionX *= -1;
         }
     }
 }

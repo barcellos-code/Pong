@@ -556,5 +556,45 @@ namespace Tests
             Assert.AreEqual(expectedBallPosX, actualBallPosX);
             Assert.AreEqual(expectedBallPosY, actualBallPosY);
         }
+
+        [TestMethod]
+        public void TestDirectionInvertAfterReset()
+        {
+            // Arrange
+            _ballService?.Dispose();
+            var stageWidth = 11;
+            var stageHeight = 100;
+            var directionX = 1;
+            var directionY = 1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            var ball = _ballService?.GetBall();
+            var expectedBallDirectionX = -1;
+
+            // Act
+            for (var i = 1; i <= 6; i++)
+                ball?.Move();
+            var actualBallDirectionX = ball?.DirectionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallDirectionX, actualBallDirectionX);
+
+            // Arrange
+            _ballService?.Dispose();
+            stageWidth = 20;
+            stageHeight = 5;
+            directionX = -1;
+            directionY = -1;
+            _ballService?.CreateBall(stageWidth, stageHeight, directionX, directionY);
+            ball = _ballService?.GetBall();
+            expectedBallDirectionX = 1;
+
+            // Act
+            for (var i = 1; i <= 11; i++)
+                ball?.Move();
+            actualBallDirectionX = ball?.DirectionX;
+
+            // Assert
+            Assert.AreEqual(expectedBallDirectionX, actualBallDirectionX);
+        }
     }
 }
