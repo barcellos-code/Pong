@@ -13,6 +13,7 @@ namespace Ball
         public int DirectionX { get; private set; } = dirX;
 
         public int DirectionY { get; private set; } = dirY;
+        public event Action<int>? OnHitGoal;
 
         private readonly int _initialPosX = posX;
         private readonly int _initialPosY = posY;
@@ -68,17 +69,14 @@ namespace Ball
 
         private void ResetBackToStageCenter()
         {
-            if (PositionX >= _stageWidth)
-            {
-                ResetPosition();
-                InvertDirectionX();
-                return;
-            }
+            var hitLeftGoal = PositionX < 0;
+            var hitRightGoal = PositionX >= _stageWidth;
 
-            if (PositionX < 0)
+            if (hitLeftGoal || hitRightGoal)
             {
                 ResetPosition();
                 InvertDirectionX();
+                InvokeGoalEvent(hitRightGoal);
                 return;
             }
 
@@ -90,6 +88,12 @@ namespace Ball
 
             void InvertDirectionX()
                 => DirectionX *= -1;
+
+            void InvokeGoalEvent(bool hitRightGoal)
+            {
+                var goalIndex = hitRightGoal ? 0 : 1;
+                OnHitGoal?.Invoke(goalIndex);
+            }
         }
     }
 }

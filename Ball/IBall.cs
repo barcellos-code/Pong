@@ -6,6 +6,7 @@
         int PositionY { get; }
         int DirectionX { get; }
         int DirectionY { get; }
+        event Action<int> OnHitGoal;
         void Move();
     }
 }
