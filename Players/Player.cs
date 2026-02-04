@@ -6,6 +6,7 @@ namespace Players
     internal class Player : IPlayer
     {
         public int Score {get; private set;} = 0;
+        public event Action<int>? OnScoreUpdated;
 
         private int _goalIndex = -1;
 
@@ -26,6 +27,9 @@ namespace Players
         }
 
         private void IncrementScore()
-            => Score++;
+        {
+            Score++;
+            OnScoreUpdated?.Invoke(Score);
+        }
     }
 }
