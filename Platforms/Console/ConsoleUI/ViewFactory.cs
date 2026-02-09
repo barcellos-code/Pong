@@ -12,4 +12,7 @@ internal class ViewFactory : IViewFactory
     
     public IBallView BallView(int posX, int posY)
         => new BallView(posX, posY);
+    
+    public IScoreView ScoreView(int playerId, int score, int screenWidth, int screenHeight)
+        => new ScoreView(playerId, score, screenWidth, screenHeight);
 }

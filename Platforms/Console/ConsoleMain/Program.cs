@@ -67,6 +67,14 @@ internal class Program
         var ballView = _viewFactory.BallView(ball.PositionX, ball.PositionY);
         _viewService.AddView(ballView);
 
+        // Create score views and add them to view service
+        for (var i = 0; i < _playersService.NumberOfPlayers; i++)
+        {
+            var player = _playersService.GetPlayer(i);
+            var scoreView = _viewFactory.ScoreView(i + 1, player.Score, stage.Width, stage.Height);
+            _viewService.AddView(scoreView);
+        }
+
         _viewService.DrawAllViews();
 
         Console.ReadKey();

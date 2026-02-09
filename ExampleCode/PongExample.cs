@@ -28,8 +28,10 @@
         {
             Console.Title = "Console Pong";
             Console.CursorVisible = false;
+#pragma warning disable CA1416 // Validate platform compatibility
             Console.SetWindowSize(ScreenWidth, ScreenHeight);
             Console.SetBufferSize(ScreenWidth, ScreenHeight);
+#pragma warning restore CA1416 // Validate platform compatibility
 
             InitializeGame();
 

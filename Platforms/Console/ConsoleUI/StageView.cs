@@ -12,7 +12,7 @@ internal class StageView(int width, int height) : IStageView
 #pragma warning disable CA1416 // Validate platform compatibility
         Console.SetWindowSize(_width, _height);
         Console.SetBufferSize(_width, _height);
-#pragma warning restore CA1416 // Validate platform compatibility☻
+#pragma warning restore CA1416 // Validate platform compatibility
     }
 
     public void Update(int width, int height)
