@@ -23,7 +23,7 @@
 [X] Game ends when a player hits a predetermined score
 
 [X] Display game stage on screen
-[ ] Display paddles on screen
+[X] Display paddles on screen
 [ ] Display ball on screen
 [ ] Display scores on screen
 

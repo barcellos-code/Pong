@@ -2,8 +2,11 @@ using UI;
 
 namespace ConsoleUI;
 
-public static partial class ViewFactory
+internal class ViewFactory : IViewFactory
 {
-    public static IStageView StageView()
-        => new ConsoleStageView();
+    public IStageView StageView(int width, int height)
+        => new StageView(width, height);
+    
+    public IPaddleView PaddleView(int posX, int posY, int size)
+        => new PaddleView(posX, posY, size);
 }

@@ -26,24 +26,33 @@ internal class Program
     private static IPlayersService? _playersService;
     private static IMatchService? _matchService;
     private static IViewService? _viewService;
+    private static IViewFactory? _viewFactory;
 
     private static void Main()
     {
         InjectServices();
 
+        // Create game simulation
         _stageService?.CreateStage(StageWidth, StageHeight);
         _paddlesService?.CreatePaddles(NumberOfPlayers, PaddleSize, StageWidth, StageHeight);
         _ballService?.CreateBall(StageWidth, StageHeight, BallInitialDirX, BallInitialDirY);
         _playersService?.CreatePlayers(NumberOfPlayers);
         _matchService?.CreateMatch(WinningScore);
 
-        var stageView = ConsoleUI.ViewFactory.StageView();
+        // Create stage view
+        var stageView = _viewFactory?.StageView(StageWidth, StageHeight);
+        _viewService?.AddView(stageView ?? throw new NullReferenceException($"Unable to create {nameof(IStageView)}"));
 
-        _viewService?.AddView(stageView);
-        stageView.Update(StageWidth, StageHeight);
+        // Create paddle views
+        for (var i = 0; i < _paddlesService?.NumberOfPaddles; i++)
+        {
+            var paddle = _paddlesService?.GetPaddle(i) ?? throw new NullReferenceException($"Unable to get {nameof(IPaddle)}");
+            var paddleView = _viewFactory?.PaddleView(paddle.PositionX, paddle.PositionY, paddle.Size);
+            _viewService?.AddView(paddleView ?? throw new NullReferenceException($"Unable to create {nameof(IPaddleView)}"));
+        }
+
         _viewService?.DrawAllViews();
 
-        Console.WriteLine("Press any key to exit...");
         Console.ReadKey();
     }
 
@@ -69,5 +78,8 @@ internal class Program
         
         _viewService = serviceProvider.GetService<IViewService>()
             ?? throw new NullReferenceException($"Unable to retrieve {nameof(IViewService)}");
+        
+        _viewFactory = serviceProvider.GetService<IViewFactory>()
+            ?? throw new NullReferenceException($"Unable to retrieve {nameof(IViewFactory)}");
     }
 }

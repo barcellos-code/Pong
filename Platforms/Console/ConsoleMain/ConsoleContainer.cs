@@ -39,6 +39,7 @@ internal static class ConsoleContainer
         serviceCollection.AddSingleton<IPlayersService, PlayersService>();
         serviceCollection.AddSingleton<IStageService, StageService>();
         serviceCollection.AddSingleton<IViewService, ConsoleViewService>();
+        serviceCollection.AddSingleton<IViewFactory, ViewFactory>();
 
         return serviceCollection.BuildServiceProvider();
     }
