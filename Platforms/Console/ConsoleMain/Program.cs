@@ -30,56 +30,45 @@ internal class Program
 
     private static void Main()
     {
-        InjectServices();
+        // Inject services
+        IServiceProvider serviceProvider = ConsoleContainer.ServiceProvider ?? throw new NullReferenceException($"{nameof(ConsoleContainer)} does not have a {nameof(ServiceProvider)}");
+        _stageService = serviceProvider.GetService<IStageService>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IStageService)}");
+        _paddlesService = serviceProvider.GetService<IPaddlesService>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPaddlesService)}");
+        _ballService = serviceProvider.GetService<IBallService>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IBallService)}");
+        _playersService = serviceProvider.GetService<IPlayersService>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPlayersService)}");
+        _matchService = serviceProvider.GetService<IMatchService>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IMatchService)}");
+        _viewService = serviceProvider.GetService<IViewService>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IViewService)}");
+        _viewFactory = serviceProvider.GetService<IViewFactory>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IViewFactory)}");
 
         // Create game simulation
-        _stageService?.CreateStage(StageWidth, StageHeight);
-        _paddlesService?.CreatePaddles(NumberOfPlayers, PaddleSize, StageWidth, StageHeight);
-        _ballService?.CreateBall(StageWidth, StageHeight, BallInitialDirX, BallInitialDirY);
-        _playersService?.CreatePlayers(NumberOfPlayers);
-        _matchService?.CreateMatch(WinningScore);
+        _stageService.CreateStage(StageWidth, StageHeight);
+        _paddlesService.CreatePaddles(NumberOfPlayers, PaddleSize, StageWidth, StageHeight);
+        _ballService.CreateBall(StageWidth, StageHeight, BallInitialDirX, BallInitialDirY);
+        _playersService.CreatePlayers(NumberOfPlayers);
+        _matchService.CreateMatch(WinningScore);
 
-        // Create stage view
-        var stageView = _viewFactory?.StageView(StageWidth, StageHeight);
-        _viewService?.AddView(stageView ?? throw new NullReferenceException($"Unable to create {nameof(IStageView)}"));
+        // Declare game simulation variables
+        var stage = _stageService.GetStage();
+        var ball = _ballService.GetBall();
 
-        // Create paddle views
-        for (var i = 0; i < _paddlesService?.NumberOfPaddles; i++)
+        // Create stage view and add it to view service
+        var stageView = _viewFactory.StageView(stage.Width, stage.Height);
+        _viewService.AddView(stageView);
+
+        // Create paddle views and add them to view service
+        for (var i = 0; i < _paddlesService.NumberOfPaddles; i++)
         {
-            var paddle = _paddlesService?.GetPaddle(i) ?? throw new NullReferenceException($"Unable to get {nameof(IPaddle)}");
-            var paddleView = _viewFactory?.PaddleView(paddle.PositionX, paddle.PositionY, paddle.Size);
-            _viewService?.AddView(paddleView ?? throw new NullReferenceException($"Unable to create {nameof(IPaddleView)}"));
+            var paddle = _paddlesService.GetPaddle(i);
+            var paddleView = _viewFactory.PaddleView(paddle.PositionX, paddle.PositionY, paddle.Size);
+            _viewService.AddView(paddleView);
         }
 
-        _viewService?.DrawAllViews();
+        // Create ball view and add it to view service
+        var ballView = _viewFactory.BallView(ball.PositionX, ball.PositionY);
+        _viewService.AddView(ballView);
+
+        _viewService.DrawAllViews();
 
         Console.ReadKey();
-    }
-
-    private static void InjectServices()
-    {
-        IServiceProvider serviceProvider = ConsoleContainer.ServiceProvider
-                    ?? throw new NullReferenceException($"{nameof(ConsoleContainer)} does not have a {nameof(ServiceProvider)}");
-
-        _stageService = serviceProvider.GetService<IStageService>()
-            ?? throw new NullReferenceException($"Unable to retrieve {nameof(IStageService)}");
-
-        _paddlesService = serviceProvider.GetService<IPaddlesService>()
-            ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPaddlesService)}");
-
-        _ballService = serviceProvider.GetService<IBallService>()
-            ?? throw new NullReferenceException($"Unable to retrieve {nameof(IBallService)}");
-
-        _playersService = serviceProvider.GetService<IPlayersService>()
-            ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPlayersService)}");
-
-        _matchService = serviceProvider.GetService<IMatchService>()
-            ?? throw new NullReferenceException($"Unable to retrieve {nameof(IMatchService)}");
-        
-        _viewService = serviceProvider.GetService<IViewService>()
-            ?? throw new NullReferenceException($"Unable to retrieve {nameof(IViewService)}");
-        
-        _viewFactory = serviceProvider.GetService<IViewFactory>()
-            ?? throw new NullReferenceException($"Unable to retrieve {nameof(IViewFactory)}");
     }
 }

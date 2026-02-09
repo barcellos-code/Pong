@@ -2,7 +2,7 @@ using UI;
 
 namespace ConsoleUI;
 
-public class PaddleView(int posX, int posY, int size) : IPaddleView
+internal class PaddleView(int posX, int posY, int size) : IPaddleView
 {
     private int _positionX = posX;
     private int _positionY = posY;

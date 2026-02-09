@@ -2,7 +2,7 @@ using UI;
 
 namespace ConsoleUI;
 
-internal class ConsoleViewService : IViewService
+internal class ViewService : IViewService
 {
     private readonly List<IView> _views = [];
 

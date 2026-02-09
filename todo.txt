@@ -24,7 +24,7 @@
 
 [X] Display game stage on screen
 [X] Display paddles on screen
-[ ] Display ball on screen
+[X] Display ball on screen
 [ ] Display scores on screen
 
 [ ] Game tick

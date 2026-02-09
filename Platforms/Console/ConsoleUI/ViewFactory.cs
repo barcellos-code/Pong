@@ -9,4 +9,7 @@ internal class ViewFactory : IViewFactory
     
     public IPaddleView PaddleView(int posX, int posY, int size)
         => new PaddleView(posX, posY, size);
+    
+    public IBallView BallView(int posX, int posY)
+        => new BallView(posX, posY);
 }
