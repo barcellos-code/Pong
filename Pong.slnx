@@ -1,17 +1,37 @@
 <Solution>
-  <Folder Name="/Core/">
-    <Project Path="Core/Ball/Ball.csproj" />
-    <Project Path="Core/Container/Container.csproj" />
-    <Project Path="Core/CoreTests/CoreTests.csproj" />
-    <Project Path="Core/Match/Match.csproj" />
-    <Project Path="Core/Paddles/Paddles.csproj" />
-    <Project Path="Core/Players/Players.csproj" />
-    <Project Path="Core/Stage/Stage.csproj" />
+  <Folder Name="/_1_Entities/">
+    <Project Path="_1_Entities/Ball/Ball.csproj" />
+    <Project Path="_1_Entities/Container/Container.csproj" />
+    <Project Path="_1_Entities/EntitiesTests/EntitiesTests.csproj" />
+    <Project Path="_1_Entities/Match/Match.csproj" />
+    <Project Path="_1_Entities/Paddles/Paddles.csproj" />
+    <Project Path="_1_Entities/Players/Players.csproj" />
+    <Project Path="_1_Entities/Stage/Stage.csproj" />
   </Folder>
-  <Folder Name="/Platforms/" />
-  <Folder Name="/Platforms/Console/">
-    <Project Path="Platforms/Console/ConsoleMain/ConsoleMain.csproj" />
-    <Project Path="Platforms/Console/ConsoleUI/ConsoleUI.csproj" />
+  <Folder Name="/_2_Use_Cases/">
+    <Project Path="_2_Use_Cases/BallInteractor/BallInteractor.csproj" />
+    <Project Path="_2_Use_Cases/PaddlesInteractor/PaddlesInteractor.csproj" />
+    <Project Path="_2_Use_Cases/PlayersInteractor/PlayersInteractor.csproj" />
+    <Project Path="_2_Use_Cases/StageInteractor/StageInteractor.csproj" />
   </Folder>
-  <Project Path="UI/UI.csproj" />
+  <Folder Name="/_3_Controllers_and_Presenters/">
+    <Project Path="_3_Controllers_and_Presenters/BallController/BallController.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/BallPresenter/BallPresenter.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/PaddlePresenter/PaddlePresenter.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/PaddlesController/PaddlesController.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/PlayerPresenter/PlayerPresenter.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/PlayersController/PlayersController.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/StageController/StageController.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/StagePresenter/StagePresenter.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/Tick/Tick.csproj" />
+  </Folder>
+  <Folder Name="/_4_Infrastructure/" />
+  <Folder Name="/_4_Infrastructure/ConsolePlatform/">
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleBallView/ConsoleBallView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleMain/ConsoleMain.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePaddleView/ConsolePaddleView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePlayerView/ConsolePlayerView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleStageView/ConsoleStageView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleTick/ConsoleTick.csproj" />
+  </Folder>
 </Solution>

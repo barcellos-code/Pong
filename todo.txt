@@ -27,10 +27,12 @@
 [X] Display ball on screen
 [X] Display scores on screen
 
-[ ] Game tick
-[ ] Ball moves on game tick
+[X] Game tick
+[X] Ball moves on game tick
+
+[ ] Redraw screen on tick
 
 [ ] Input
-[ ] Paddles move up and down on players input
+[ ] Paddles move on players input
 
 [ ] Display "match ended" message on screen
