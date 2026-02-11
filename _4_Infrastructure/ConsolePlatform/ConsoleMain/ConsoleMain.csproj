@@ -30,6 +30,7 @@
     <ProjectReference Include="..\..\..\_4_Infrastructure\ConsolePlatform\ConsolePaddleView\ConsolePaddleView.csproj" />
     <ProjectReference Include="..\..\..\_4_Infrastructure\ConsolePlatform\ConsolePlayerView\ConsolePlayerView.csproj" />
     <ProjectReference Include="..\..\..\_4_Infrastructure\ConsolePlatform\ConsoleStageView\ConsoleStageView.csproj" />
+    <ProjectReference Include="..\ConsolePaddlesInput\ConsolePaddlesInput.csproj" />
     <ProjectReference Include="..\ConsoleViewBatch\ConsoleViewBatch.csproj" />
   </ItemGroup>
 

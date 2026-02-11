@@ -3,6 +3,7 @@ using BallController;
 using BallInteractor;
 using BallPresenter;
 using ConsoleBallView;
+using ConsolePaddlesInput;
 using ConsolePaddleView;
 using ConsolePlayerView;
 using ConsoleStageView;
@@ -64,6 +65,7 @@ internal static class ConsoleContainer
         // Controllers
         serviceCollection.AddTransient<IBallController, BallController.BallController>();
         serviceCollection.AddTransient<IPaddlesController, PaddlesController.PaddlesController>();
+        serviceCollection.AddSingleton<IPaddlesInputService, PaddlesInputService>();
         serviceCollection.AddTransient<IPlayersController, PlayersController.PlayersController>();
         serviceCollection.AddTransient<IStageController, StageController.StageController>();
 

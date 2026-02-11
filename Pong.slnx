@@ -28,6 +28,7 @@
   <Folder Name="/_4_Infrastructure/ConsolePlatform/">
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleBallView/ConsoleBallView.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleMain/ConsoleMain.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePaddlesInput/ConsolePaddlesInput.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePaddleView/ConsolePaddleView.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePlayerView/ConsolePlayerView.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleStageView/ConsoleStageView.csproj" />

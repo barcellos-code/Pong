@@ -34,7 +34,7 @@
 
 [X] Refactor tick to be a part of ball controller component
 
-[ ] Input
-[ ] Paddles move on players input
+[X] Input
+[X] Paddles move on players input
 
 [ ] Display "match ended" message on screen

@@ -1,6 +1,6 @@
 namespace ConsoleViewBatch;
 
-public class ViewBatch : IViewBatch
+internal class ViewBatch : IViewBatch
 {
     private const float FrameRate = 30; // frames per second
     private const int Milliseconds = (int)(1 / FrameRate * 1000);
