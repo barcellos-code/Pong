@@ -1,11 +1,12 @@
+using Container;
+using Microsoft.Extensions.DependencyInjection;
 using Players;
 
 namespace PlayersInteractor;
 
-internal class PlayersInteractor(IPlayersService playersService, IPlayerPresenter playerPresenter) : IPlayersInteractor
+internal class PlayersInteractor(IPlayersService playersService) : IPlayersInteractor
 {
     private readonly IPlayersService _playersService = playersService;
-    private readonly IPlayerPresenter _playerPresenter = playerPresenter;
 
     public void CreatePlayers(int numberOfPlayers, int screenWidth, int screenHeight)
     {
@@ -25,6 +26,9 @@ internal class PlayersInteractor(IPlayersService playersService, IPlayerPresente
     
     private void DrawPlayer(IPlayer player, int playerIndex, int screenWidth, int screenHeight)
     {
-        _playerPresenter.DrawPlayer(playerIndex, player.Score, screenWidth, screenHeight);
+        var serviceProvider = DependencyContainer.ServiceProvider ?? throw new NullReferenceException($"{nameof(DependencyContainer)} does not have a {nameof(ServiceProvider)}");
+        var playerPresenter = serviceProvider.GetService<IPlayerPresenter>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPlayerPresenter)}");
+
+        playerPresenter.DrawPlayer(playerIndex, player.Score, screenWidth, screenHeight);
     }
 }

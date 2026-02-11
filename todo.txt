@@ -30,7 +30,9 @@
 [X] Game tick
 [X] Ball moves on game tick
 
-[ ] Redraw screen on tick
+[X] Redraw screen on tick
+
+[ ] Refactor tick to be a part of ball controller component
 
 [ ] Input
 [ ] Paddles move on players input

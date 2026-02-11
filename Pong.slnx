@@ -33,5 +33,6 @@
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePlayerView/ConsolePlayerView.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleStageView/ConsoleStageView.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleTick/ConsoleTick.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleViewBatch/ConsoleViewBatch.csproj" />
   </Folder>
 </Solution>

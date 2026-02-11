@@ -1,11 +1,12 @@
+using Container;
+using Microsoft.Extensions.DependencyInjection;
 using Paddles;
 
 namespace PaddlesInteractor;
 
-internal class PaddlesInteractor(IPaddlesService paddlesService, IPaddlePresenter paddlePresenter) : IPaddlesInteractor
+internal class PaddlesInteractor(IPaddlesService paddlesService) : IPaddlesInteractor
 {
     private readonly IPaddlesService _paddlesService = paddlesService;
-    private readonly IPaddlePresenter _paddlePresenter = paddlePresenter;
 
     public void CreatePaddles(int numberOfPaddles, int paddleSize, int stageWidth, int stageHeight)
     {
@@ -42,6 +43,11 @@ internal class PaddlesInteractor(IPaddlesService paddlesService, IPaddlePresente
         }
     }
 
-    private void DrawPaddle(IPaddle paddle)
-        => _paddlePresenter.DrawPaddle(paddle.Size, paddle.PositionX, paddle.PositionY);
+    private static void DrawPaddle(IPaddle paddle)
+    {
+        var serviceProvider = DependencyContainer.ServiceProvider ?? throw new NullReferenceException($"{nameof(DependencyContainer)} does not have a {nameof(ServiceProvider)}");
+        var paddlePresenter = serviceProvider.GetService<IPaddlePresenter>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPaddlePresenter)}");
+        
+        paddlePresenter.DrawPaddle(paddle.Size, paddle.PositionX, paddle.PositionY);
+    }
 }

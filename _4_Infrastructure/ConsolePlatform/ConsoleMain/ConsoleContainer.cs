@@ -7,6 +7,7 @@ using ConsolePaddleView;
 using ConsolePlayerView;
 using ConsoleStageView;
 using ConsoleTick;
+using ConsoleViewBatch;
 using Container;
 using Match;
 using Microsoft.Extensions.DependencyInjection;
@@ -81,6 +82,7 @@ internal static class ConsoleContainer
         serviceCollection.AddTransient<IPaddleView, PaddleView>();
         serviceCollection.AddTransient<IPlayerView, PlayerView>();
         serviceCollection.AddTransient<IStageView, StageView>();
+        serviceCollection.AddSingleton<IViewBatch, ViewBatch>();
 
         // Other Infrastructure
         serviceCollection.AddSingleton<ITickService, TickService>();

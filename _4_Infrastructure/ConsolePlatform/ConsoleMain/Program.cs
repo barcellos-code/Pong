@@ -1,4 +1,5 @@
 ﻿using BallController;
+using ConsoleViewBatch;
 using Microsoft.Extensions.DependencyInjection;
 using PaddlesController;
 using PlayersController;
@@ -24,12 +25,15 @@ internal class Program
         IServiceProvider serviceProvider = ConsoleContainer.ServiceProvider ?? throw new NullReferenceException($"{nameof(ConsoleContainer)} does not have a {nameof(ServiceProvider)}");
         
         // Retrieve Controllers
-        var ballController = serviceProvider.GetService<IBallController>() ?? throw new NullReferenceException($"Unable to inject {nameof(IBallController)}");
-        var paddlesController = serviceProvider.GetService<IPaddlesController>() ?? throw new NullReferenceException($"Unable to inject {nameof(IPaddlesController)}");
-        var playersController = serviceProvider.GetService<IPlayersController>() ?? throw new NullReferenceException($"Unable to inject {nameof(IPlayersController)}");
-        var stageController = serviceProvider.GetService<IStageController>() ?? throw new NullReferenceException($"Unable to inject {nameof(IStageController)}");
-        var tickService = serviceProvider.GetService<ITickService>() ?? throw new NullReferenceException($"Unable to inject {nameof(ITickService)}");
+        var ballController = serviceProvider.GetService<IBallController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IBallController)}");
+        var paddlesController = serviceProvider.GetService<IPaddlesController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPaddlesController)}");
+        var playersController = serviceProvider.GetService<IPlayersController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPlayersController)}");
+        var stageController = serviceProvider.GetService<IStageController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IStageController)}");
+        var tickService = serviceProvider.GetService<ITickService>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(ITickService)}");
 
+        // Retrieve Infrastructure
+        var viewBatch = serviceProvider.GetService<IViewBatch>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IViewBatch)}");
+        
         // Create Game Entities
         ballController.CreateBall(StageWidth, StageHeight, BallInitialDirX, BallInitialDirY);
         paddlesController.CreatePaddles(NumberOfPlayers, PaddleSize, StageWidth, StageHeight);
@@ -39,6 +43,9 @@ internal class Program
         // Bind Events
         playersController.BindGoalEvents();
         ballController.BindTickEvent();
+
+        // Start UI
+        viewBatch.Start();
 
         // Start Game Simulation
         tickService.StartTick();

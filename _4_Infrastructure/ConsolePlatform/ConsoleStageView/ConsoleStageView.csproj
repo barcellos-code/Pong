@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\_3_Controllers_and_Presenters\StagePresenter\StagePresenter.csproj" />
+    <ProjectReference Include="..\ConsoleViewBatch\ConsoleViewBatch.csproj" />
   </ItemGroup>
 
 </Project>
