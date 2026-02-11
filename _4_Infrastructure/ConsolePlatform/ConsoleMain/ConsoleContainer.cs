@@ -6,7 +6,6 @@ using ConsoleBallView;
 using ConsolePaddleView;
 using ConsolePlayerView;
 using ConsoleStageView;
-using ConsoleTick;
 using ConsoleViewBatch;
 using Container;
 using Match;
@@ -23,7 +22,6 @@ using Stage;
 using StageController;
 using StageInteractor;
 using StagePresenter;
-using Tick;
 
 namespace ConsoleMain;
 
@@ -83,9 +81,6 @@ internal static class ConsoleContainer
         serviceCollection.AddTransient<IPlayerView, PlayerView>();
         serviceCollection.AddTransient<IStageView, StageView>();
         serviceCollection.AddSingleton<IViewBatch, ViewBatch>();
-
-        // Other Infrastructure
-        serviceCollection.AddSingleton<ITickService, TickService>();
 
         return serviceCollection.BuildServiceProvider();
     }

@@ -1,14 +1,11 @@
-using Tick;
+namespace BallController;
 
-namespace ConsoleTick;
-
-internal class TickService : ITickService
+internal class BallTick
 {
-    private const int DefaultTickInterval = 500;
+    private const int Milliseconds = 500;
 
     public event Action? OnTick;
 
-    private int _tickInterval = DefaultTickInterval;
     private bool _isActive;
     private Thread? _tickRoutineThread;
 
@@ -27,7 +24,7 @@ internal class TickService : ITickService
         while (_isActive)
         {
             OnTick?.Invoke();
-            Thread.Sleep(_tickInterval);
+            Thread.Sleep(Milliseconds);
         }
     }
 }

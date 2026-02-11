@@ -1,7 +1,8 @@
 namespace BallController;
 
-public interface IBallController : IDisposable
+public interface IBallController
 {
     void CreateBall(int stageWidth, int stageHeight, int directionX, int directionY);
-    void BindTickEvent();
+    void StartBallTick();
+    void StopBallTick();
 }

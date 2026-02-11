@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\_2_Use_Cases\BallInteractor\BallInteractor.csproj" />
-    <ProjectReference Include="..\Tick\Tick.csproj" />
   </ItemGroup>
 
 </Project>

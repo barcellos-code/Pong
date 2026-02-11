@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using PaddlesController;
 using PlayersController;
 using StageController;
-using Tick;
 
 namespace ConsoleMain;
 
@@ -29,7 +28,6 @@ internal class Program
         var paddlesController = serviceProvider.GetService<IPaddlesController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPaddlesController)}");
         var playersController = serviceProvider.GetService<IPlayersController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPlayersController)}");
         var stageController = serviceProvider.GetService<IStageController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IStageController)}");
-        var tickService = serviceProvider.GetService<ITickService>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(ITickService)}");
 
         // Retrieve Infrastructure
         var viewBatch = serviceProvider.GetService<IViewBatch>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IViewBatch)}");
@@ -42,12 +40,11 @@ internal class Program
 
         // Bind Events
         playersController.BindGoalEvents();
-        ballController.BindTickEvent();
 
         // Start UI
         viewBatch.Start();
 
-        // Start Game Simulation
-        tickService.StartTick();
+        // Start Ball Tick
+        ballController.StartBallTick();
     }
 }
