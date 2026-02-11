@@ -37,4 +37,5 @@
 [X] Input
 [X] Paddles move on players input
 
-[ ] Display "match ended" message on screen
+[X] Display "match ended" message on screen
+[ ] Ball and input stop on match ended

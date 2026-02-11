@@ -2,7 +2,7 @@ namespace BallController;
 
 internal class BallTick
 {
-    private const int Milliseconds = 500;
+    private const int Milliseconds = 50;
 
     public event Action? OnTick;
 

@@ -12,7 +12,7 @@
         {
             for (var i = 0; i < numberOfPlayers; i++)
             {
-                var player = new Player();
+                var player = new Player(i);
                 _players.Add(player);
             }
         }

@@ -2,6 +2,7 @@ namespace Players;
 
 public interface IPlayer
 {
+    int Index { get; }
     int Score {get; }
-    event Action<int> OnScoreUpdated;
+    event Action<IPlayer> OnScoreUpdated;
 }

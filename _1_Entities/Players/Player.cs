@@ -4,10 +4,11 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Players
 {
-    internal class Player : IPlayer
+    internal class Player(int index) : IPlayer
     {
-        public int Score {get; private set;} = 0;
-        public event Action<int>? OnScoreUpdated;
+        public int Index { get; private set; } = index;
+        public int Score { get; private set; }
+        public event Action<IPlayer>? OnScoreUpdated;
 
         private int _goalIndex = -1;
 
@@ -30,7 +31,7 @@ namespace Players
         private void IncrementScore()
         {
             Score++;
-            OnScoreUpdated?.Invoke(Score);
+            OnScoreUpdated?.Invoke(this);
         }
     }
 }

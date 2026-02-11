@@ -3,6 +3,7 @@ using BallController;
 using BallInteractor;
 using BallPresenter;
 using ConsoleBallView;
+using ConsoleMatchView;
 using ConsolePaddlesInput;
 using ConsolePaddleView;
 using ConsolePlayerView;
@@ -10,6 +11,9 @@ using ConsoleStageView;
 using ConsoleViewBatch;
 using Container;
 using Match;
+using MatchController;
+using MatchInteractor;
+using MatchPresenter;
 using Microsoft.Extensions.DependencyInjection;
 using PaddlePresenter;
 using Paddles;
@@ -58,12 +62,14 @@ internal static class ConsoleContainer
         
         // Interactors
         serviceCollection.AddSingleton<IBallInteractor, BallInteractor.BallInteractor>();
+        serviceCollection.AddSingleton<IMatchInteractor, MatchInteractor.MatchInteractor>();
         serviceCollection.AddSingleton<IPaddlesInteractor, PaddlesInteractor.PaddlesInteractor>();
         serviceCollection.AddSingleton<IPlayersInteractor, PlayersInteractor.PlayersInteractor>();
         serviceCollection.AddSingleton<IStageInteractor, StageInteractor.StageInteractor>();
 
         // Controllers
         serviceCollection.AddTransient<IBallController, BallController.BallController>();
+        serviceCollection.AddTransient<IMatchController, MatchController.MatchController>();
         serviceCollection.AddTransient<IPaddlesController, PaddlesController.PaddlesController>();
         serviceCollection.AddSingleton<IPaddlesInputService, PaddlesInputService>();
         serviceCollection.AddTransient<IPlayersController, PlayersController.PlayersController>();
@@ -71,6 +77,7 @@ internal static class ConsoleContainer
 
         // Presenters
         serviceCollection.AddTransient<IBallPresenter, BallPresenter.BallPresenter>();
+        serviceCollection.AddTransient<IMatchPresenter, MatchPresenter.MatchPresenter>();
         serviceCollection.AddTransient<IPaddlePresenter, PaddlePresenter.PaddlePresenter>();
         serviceCollection.AddTransient<IPlayerPresenter, PlayerPresenter.PlayerPresenter>();
         serviceCollection.AddTransient<IStagePresenter, StagePresenter.StagePresenter>();
@@ -79,6 +86,7 @@ internal static class ConsoleContainer
 
         // Views
         serviceCollection.AddTransient<IBallView, BallView>();
+        serviceCollection.AddTransient<IMatchView, MatchView>();
         serviceCollection.AddTransient<IPaddleView, PaddleView>();
         serviceCollection.AddTransient<IPlayerView, PlayerView>();
         serviceCollection.AddTransient<IStageView, StageView>();

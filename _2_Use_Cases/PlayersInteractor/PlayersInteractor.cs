@@ -34,23 +34,23 @@ internal class PlayersInteractor(IPlayersService playersService) : IPlayersInter
         }
     }
     
-    private void OnScoreUpdated(int _)
-        => DrawPlayers();
+    private void OnScoreUpdated(IPlayer player)
+        => DrawPlayer(player, _screenWidth, _screenHeight);
     
     private void DrawPlayers()
     {
         for (var i = 0; i < _playersService.NumberOfPlayers; i++)
         {
             var player = _playersService.GetPlayer(i);
-            DrawPlayer(player, i, _screenWidth, _screenHeight);
+            DrawPlayer(player, _screenWidth, _screenHeight);
         }
     }
     
-    private void DrawPlayer(IPlayer player, int playerIndex, int screenWidth, int screenHeight)
+    private void DrawPlayer(IPlayer player, int screenWidth, int screenHeight)
     {
         var serviceProvider = DependencyContainer.ServiceProvider ?? throw new NullReferenceException($"{nameof(DependencyContainer)} does not have a {nameof(ServiceProvider)}");
         var playerPresenter = serviceProvider.GetService<IPlayerPresenter>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPlayerPresenter)}");
 
-        playerPresenter.DrawPlayer(playerIndex, player.Score, screenWidth, screenHeight);
+        playerPresenter.DrawPlayer(player.Index, player.Score, screenWidth, screenHeight);
     }
 }

@@ -10,6 +10,7 @@
   </Folder>
   <Folder Name="/_2_Use_Cases/">
     <Project Path="_2_Use_Cases/BallInteractor/BallInteractor.csproj" />
+    <Project Path="_2_Use_Cases/MatchInteractor/MatchInteractor.csproj" />
     <Project Path="_2_Use_Cases/PaddlesInteractor/PaddlesInteractor.csproj" />
     <Project Path="_2_Use_Cases/PlayersInteractor/PlayersInteractor.csproj" />
     <Project Path="_2_Use_Cases/StageInteractor/StageInteractor.csproj" />
@@ -17,6 +18,8 @@
   <Folder Name="/_3_Controllers_and_Presenters/">
     <Project Path="_3_Controllers_and_Presenters/BallController/BallController.csproj" />
     <Project Path="_3_Controllers_and_Presenters/BallPresenter/BallPresenter.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/MatchController/MatchController.csproj" />
+    <Project Path="_3_Controllers_and_Presenters/MatchPresenter/MatchPresenter.csproj" />
     <Project Path="_3_Controllers_and_Presenters/PaddlePresenter/PaddlePresenter.csproj" />
     <Project Path="_3_Controllers_and_Presenters/PaddlesController/PaddlesController.csproj" />
     <Project Path="_3_Controllers_and_Presenters/PlayerPresenter/PlayerPresenter.csproj" />
@@ -28,6 +31,7 @@
   <Folder Name="/_4_Infrastructure/ConsolePlatform/">
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleBallView/ConsoleBallView.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleMain/ConsoleMain.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleMatchView/ConsoleMatchView.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePaddlesInput/ConsolePaddlesInput.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePaddleView/ConsolePaddleView.csproj" />
     <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePlayerView/ConsolePlayerView.csproj" />

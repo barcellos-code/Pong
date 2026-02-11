@@ -1,5 +1,6 @@
 ﻿using BallController;
 using ConsoleViewBatch;
+using MatchController;
 using Microsoft.Extensions.DependencyInjection;
 using PaddlesController;
 using PlayersController;
@@ -16,7 +17,7 @@ internal class Program
     private const int PaddleSize = 5;
     private const int BallInitialDirX = 1;
     private const int BallInitialDirY = 1;
-    private const int WinningScore = 5;
+    private const int WinningScore = 3;
 
     private static void Main()
     {
@@ -25,6 +26,7 @@ internal class Program
         
         // Retrieve Controllers
         var ballController = serviceProvider.GetService<IBallController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IBallController)}");
+        var matchController = serviceProvider.GetService<IMatchController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IMatchController)}");
         var paddlesController = serviceProvider.GetService<IPaddlesController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPaddlesController)}");
         var playersController = serviceProvider.GetService<IPlayersController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IPlayersController)}");
         var stageController = serviceProvider.GetService<IStageController>() ?? throw new NullReferenceException($"Unable to retrieve {nameof(IStageController)}");
@@ -34,12 +36,14 @@ internal class Program
         
         // Create Game Entities
         ballController.CreateBall(StageWidth, StageHeight, BallInitialDirX, BallInitialDirY);
+        matchController.CreateMatch(WinningScore, StageWidth, StageHeight);
         paddlesController.CreatePaddles(NumberOfPlayers, PaddleSize, StageWidth, StageHeight);
         playersController.CreatePlayers(NumberOfPlayers, StageWidth, StageHeight);
         stageController.CreateStage(StageWidth, StageHeight);
 
         // Bind Events
         playersController.BindGoalEvents();
+        matchController.BindScoreEvents();
 
         // Start UI
         viewBatch.Start();

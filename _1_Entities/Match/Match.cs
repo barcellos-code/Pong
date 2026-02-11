@@ -7,6 +7,7 @@ namespace Match;
 internal class Match(int winningScoreValue) : IMatch
 {
     public bool IsOngoing { get; private set; }
+    public event Action<IPlayer>? OnMatchEnded;
 
     private readonly int _winningScoreValue = winningScoreValue;
 
@@ -29,14 +30,17 @@ internal class Match(int winningScoreValue) : IMatch
         }
     }
 
-    private void EndMatchIfPlayerWon(int scoreValue)
+    private void EndMatchIfPlayerWon(IPlayer player)
     {
-        if (scoreValue < _winningScoreValue)
+        if (player.Score < _winningScoreValue)
             return;
         
-        EndMatch();
+        EndMatch(player);
     }
 
-    private void EndMatch()
-        => IsOngoing = false;
+    private void EndMatch(IPlayer winningPlayer)
+    {
+        IsOngoing = false;
+        OnMatchEnded?.Invoke(winningPlayer);
+    }
 }

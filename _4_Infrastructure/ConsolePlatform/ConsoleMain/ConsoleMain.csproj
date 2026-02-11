@@ -15,11 +15,14 @@
     <ProjectReference Include="..\..\..\_1_Entities\Players\Players.csproj" />
     <ProjectReference Include="..\..\..\_1_Entities\Stage\Stage.csproj" />
     <ProjectReference Include="..\..\..\_2_Use_Cases\BallInteractor\BallInteractor.csproj" />
+    <ProjectReference Include="..\..\..\_2_Use_Cases\MatchInteractor\MatchInteractor.csproj" />
     <ProjectReference Include="..\..\..\_2_Use_Cases\PaddlesInteractor\PaddlesInteractor.csproj" />
     <ProjectReference Include="..\..\..\_2_Use_Cases\PlayersInteractor\PlayersInteractor.csproj" />
     <ProjectReference Include="..\..\..\_2_Use_Cases\StageInteractor\StageInteractor.csproj" />
     <ProjectReference Include="..\..\..\_3_Controllers_and_Presenters\BallController\BallController.csproj" />
     <ProjectReference Include="..\..\..\_3_Controllers_and_Presenters\BallPresenter\BallPresenter.csproj" />
+    <ProjectReference Include="..\..\..\_3_Controllers_and_Presenters\MatchController\MatchController.csproj" />
+    <ProjectReference Include="..\..\..\_3_Controllers_and_Presenters\MatchPresenter\MatchPresenter.csproj" />
     <ProjectReference Include="..\..\..\_3_Controllers_and_Presenters\PaddlePresenter\PaddlePresenter.csproj" />
     <ProjectReference Include="..\..\..\_3_Controllers_and_Presenters\PaddlesController\PaddlesController.csproj" />
     <ProjectReference Include="..\..\..\_3_Controllers_and_Presenters\PlayersController\PlayersController.csproj" />
@@ -30,6 +33,7 @@
     <ProjectReference Include="..\..\..\_4_Infrastructure\ConsolePlatform\ConsolePaddleView\ConsolePaddleView.csproj" />
     <ProjectReference Include="..\..\..\_4_Infrastructure\ConsolePlatform\ConsolePlayerView\ConsolePlayerView.csproj" />
     <ProjectReference Include="..\..\..\_4_Infrastructure\ConsolePlatform\ConsoleStageView\ConsoleStageView.csproj" />
+    <ProjectReference Include="..\ConsoleMatchView\ConsoleMatchView.csproj" />
     <ProjectReference Include="..\ConsolePaddlesInput\ConsolePaddlesInput.csproj" />
     <ProjectReference Include="..\ConsoleViewBatch\ConsoleViewBatch.csproj" />
   </ItemGroup>
