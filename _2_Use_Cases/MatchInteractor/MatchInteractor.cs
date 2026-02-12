@@ -5,6 +5,8 @@ namespace MatchInteractor;
 
 internal class MatchInteractor(IMatchService matchService, IMatchPresenter matchPresenter) : IMatchInteractor
 {
+    public event Action? OnMatchEnded;
+
     private readonly IMatchService _matchService = matchService;
     private readonly IMatchPresenter _matchPresenter = matchPresenter;
 
@@ -26,9 +28,12 @@ internal class MatchInteractor(IMatchService matchService, IMatchPresenter match
     private void BindMatchEndedEvent()
     {
         var match = _matchService.GetMatch();
-        match.OnMatchEnded += OnMatchEnded;
+        match.OnMatchEnded += OnMatchEnd;
     }
 
-    private void OnMatchEnded(IPlayer winningPlayer)
-        => _matchPresenter.DrawMatchEnded(winningPlayer.Index, _screenWidth, _screenHeight);
+    private void OnMatchEnd(IPlayer winningPlayer)
+    {
+        _matchPresenter.DrawMatchEnded(winningPlayer.Index, _screenWidth, _screenHeight);
+        OnMatchEnded?.Invoke();
+    }
 }
