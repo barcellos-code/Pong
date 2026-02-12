@@ -1,11 +1,13 @@
+using MatchInteractor;
 using PaddlesInteractor;
 
 namespace PaddlesController;
 
-internal class PaddlesController(IPaddlesInteractor paddlesInteractor, IPaddlesInputService inputService) : IPaddlesController
+internal class PaddlesController(IPaddlesInteractor paddlesInteractor, IPaddlesInputService inputService, IMatchInteractor matchInteractor) : IPaddlesController
 {
     private readonly IPaddlesInteractor _paddlesInteractor = paddlesInteractor;
     private readonly IPaddlesInputService _inputService = inputService;
+    private readonly IMatchInteractor _matchInteractor = matchInteractor;
 
     public void CreatePaddles(int numberOfPaddles, int paddleSize, int stageWidth, int stageHeight)
     {
@@ -13,6 +15,7 @@ internal class PaddlesController(IPaddlesInteractor paddlesInteractor, IPaddlesI
 
         BindInputEvents();
         StartInputHandling();
+        BindMatchEndedEvent();
     }
 
     private void BindInputEvents()
@@ -29,4 +32,19 @@ internal class PaddlesController(IPaddlesInteractor paddlesInteractor, IPaddlesI
         
         _paddlesInteractor.MovePaddle(paddleIndex, paddleDirection);
     }
+
+    private void BindMatchEndedEvent()
+        => _matchInteractor.OnMatchEnded += OnMatchEnded;
+
+    private void OnMatchEnded()
+    {
+        UnbindMatchEndedEvent();
+        StopInputHandling();
+    }
+
+    private void UnbindMatchEndedEvent()
+        => _matchInteractor.OnMatchEnded -= OnMatchEnded;
+
+    private void StopInputHandling()
+        => _inputService.StopInputHandling();
 }
