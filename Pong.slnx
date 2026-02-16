@@ -28,14 +28,14 @@
     <Project Path="_3_Controllers_and_Presenters/StagePresenter/StagePresenter.csproj" />
   </Folder>
   <Folder Name="/_4_Infrastructure/" />
-  <Folder Name="/_4_Infrastructure/ConsolePlatform/">
-    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleBallView/ConsoleBallView.csproj" />
-    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleMain/ConsoleMain.csproj" />
-    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleMatchView/ConsoleMatchView.csproj" />
-    <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePaddlesInput/ConsolePaddlesInput.csproj" />
-    <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePaddleView/ConsolePaddleView.csproj" />
-    <Project Path="_4_Infrastructure/ConsolePlatform/ConsolePlayerView/ConsolePlayerView.csproj" />
-    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleStageView/ConsoleStageView.csproj" />
-    <Project Path="_4_Infrastructure/ConsolePlatform/ConsoleViewBatch/ConsoleViewBatch.csproj" />
+  <Folder Name="/_4_Infrastructure/ConsolePong/">
+    <Project Path="_4_Infrastructure/ConsolePong/ConsoleBallView/ConsoleBallView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePong/ConsolePong/ConsolePong.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePong/ConsoleMatchView/ConsoleMatchView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePong/ConsolePaddlesInput/ConsolePaddlesInput.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePong/ConsolePaddleView/ConsolePaddleView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePong/ConsolePlayerView/ConsolePlayerView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePong/ConsoleStageView/ConsoleStageView.csproj" />
+    <Project Path="_4_Infrastructure/ConsolePong/ConsoleViewBatch/ConsoleViewBatch.csproj" />
   </Folder>
 </Solution>
